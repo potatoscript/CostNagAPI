@@ -23,7 +23,26 @@ namespace CostNAGAPI.Services
                 plant = cost.plant,
                 item_spec = cost.item_spec,
                 issue_date = cost.issue_date,
-                section = cost.section
+                section = cost.section,
+                doc_no =cost.doc_no,
+                wr_no = cost.wr_no,
+                sales = cost.sales,
+                revision_no =cost.revision_no,
+                checked_date = cost.checked_date,
+                approved_by = cost.approved_by,
+                customer = cost.customer,
+                parts_code = cost.parts_code,
+                item = cost.item,
+                product = cost.product,
+                product_type = cost.product_type,
+                size = cost.size,
+                business_type = cost.business_type,
+                qty_month = cost.qty_month,
+                exchange_rate = cost.exchange_rate,
+                target_price_bht = cost.target_price_bht,
+                target_price_export = cost.target_price_export,
+                production_qty_day = cost.production_qty_day,
+                working_day = cost.working_day
             };
 
             _context.Costs.Add(_cost);
@@ -49,6 +68,25 @@ namespace CostNAGAPI.Services
                 _cost.item_spec = cost.item_spec;
                 _cost.issue_date = cost.issue_date;
                 _cost.section = cost.section;
+                _cost.doc_no = cost.doc_no;
+                _cost.wr_no = cost.wr_no;
+                _cost.sales = cost.sales;
+                _cost.revision_no = cost.revision_no;
+                _cost.checked_date = cost.checked_date;
+                _cost.approved_by = cost.approved_by;
+                _cost.customer = cost.customer;
+                _cost.parts_code = cost.parts_code;
+                _cost.item = cost.item;
+                _cost.product = cost.product;
+                _cost.product_type = cost.product_type;
+                _cost.size = cost.size;
+                _cost.business_type = cost.business_type;
+                _cost.qty_month = cost.qty_month;
+                _cost.exchange_rate = cost.exchange_rate;
+                _cost.target_price_bht = cost.target_price_bht;
+                _cost.target_price_export = cost.target_price_export;
+                _cost.production_qty_day = cost.production_qty_day;
+                _cost.working_day = cost.working_day;
 
                 _context.SaveChanges();
             }
