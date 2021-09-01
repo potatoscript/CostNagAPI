@@ -55,6 +55,18 @@ namespace CostNAGAPI.Services
             return _cost;
         }
 
+        public void DeleteCostById(int costId)
+        {
+            var _cost = _context.Costs.FirstOrDefault(n => n.CostId == costId);
+            //if we found the cost data then we will update the data
+            if (_cost != null)
+            {
+                _context.Costs.Remove(_cost);
+                _context.SaveChanges();
+            }
+
+        }
+
     }
 }
 

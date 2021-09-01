@@ -57,6 +57,15 @@ namespace CostNAGAPI.Controllers
             return Ok(updateCost);
         }
 
+
+        [HttpDelete("delete-cost-by-id/{id}")]
+        public IActionResult DeleteCostById(int id)
+        {
+            _costService.DeleteCostById(id);
+
+            return Ok();
+        }
+
         //public IConfiguration _configuration;
 
 
