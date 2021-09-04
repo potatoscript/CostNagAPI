@@ -7,7 +7,7 @@ using CostNAGAPI.Services;
 using CostNAGAPI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-
+using Newtonsoft.Json;
 
 namespace CostNAGAPI.Controllers
 {
@@ -40,7 +40,7 @@ namespace CostNAGAPI.Controllers
         }
 
         [HttpPost("add-cost")]
-        public IActionResult AddCost([FromBody]CostVM cost)
+        public IActionResult AddCost(CostVM cost)
         {
             _costService.AddCost(cost);
 
@@ -49,8 +49,8 @@ namespace CostNAGAPI.Controllers
 
 
 
-        [HttpPut("update-cost-by-id/{id}")]
-        public IActionResult UpdateCostById(int id, [FromBody]CostVM cost)
+        [HttpPost("update-cost-by-id/{id}")]
+        public IActionResult UpdateCostById(int id, CostVM cost)
         {
             var updateCost = _costService.UpdateCostById(id, cost);
 
@@ -58,7 +58,7 @@ namespace CostNAGAPI.Controllers
         }
 
 
-        [HttpDelete("delete-cost-by-id/{id}")]
+        [HttpPost("delete-cost-by-id/{id}")]
         public IActionResult DeleteCostById(int id)
         {
             _costService.DeleteCostById(id);
