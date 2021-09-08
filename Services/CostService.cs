@@ -1,6 +1,5 @@
 ﻿using CostNAG.Models;
 using CostNAGAPI.Models;
-using CostNAGAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace CostNAGAPI.Services
             _context = context;
         }
 
-        public void AddCost(CostVM cost)
+        public void AddCost(Cost cost)
         {
             var _cost = new Cost()
             {
@@ -58,7 +57,7 @@ namespace CostNAGAPI.Services
         public List<Cost> GetAllCost() => _context.Costs.ToList();
         public Cost GetCostById(int costId) => _context.Costs.FirstOrDefault(n => n.CostId == costId);
 
-        public Cost UpdateCostById(int costId, CostVM cost)
+        public Cost UpdateCostById(int costId, Cost cost)
         {
             var _cost = _context.Costs.FirstOrDefault(n => n.CostId == costId);
             //if we found the cost data then we will update the data

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\CostController.cs" />
+    <Compile Remove="ViewModels\CostVM.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +16,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 

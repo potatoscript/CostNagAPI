@@ -4,7 +4,6 @@ using System.Linq;
 using CostNAG.Models;
 using CostNAGAPI.Models;
 using CostNAGAPI.Services;
-using CostNAGAPI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -40,7 +39,7 @@ namespace CostNAGAPI.Controllers
         }
 
         [HttpPost("add-cost")]
-        public IActionResult AddCost(CostVM cost)
+        public IActionResult AddCost(Cost cost)
         {
             _costService.AddCost(cost);
 
@@ -50,7 +49,7 @@ namespace CostNAGAPI.Controllers
 
 
         [HttpPost("update-cost-by-id/{id}")]
-        public IActionResult UpdateCostById(int id, CostVM cost)
+        public IActionResult UpdateCostById(int id, Cost cost)
         {
             var updateCost = _costService.UpdateCostById(id, cost);
 
