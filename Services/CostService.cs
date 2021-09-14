@@ -297,6 +297,7 @@ namespace CostNAGAPI.Services
                 _cost.target_price_export = cost.target_price_export;
                 _cost.production_qty_day = cost.production_qty_day;
                 _cost.working_day = cost.working_day;
+
                 _cost.rubber_material_name = cost.rubber_material_name;
                 _cost.rubber_database_price_current = cost.rubber_database_price_current;
                 _cost.rubber_database_price_new = cost.rubber_database_price_new;
