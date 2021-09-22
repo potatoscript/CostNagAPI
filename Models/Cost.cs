@@ -117,10 +117,19 @@ namespace CostNAGAPI.Models
 /// /////////////Material Inhouse
 /// </summary>
         [Column(TypeName = "character varying(30)")]
-        public double material_inhouse_name_1 { get; set; }
+        public string material_inhouse_name_1 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_inhouse_info_1 { get; set; }
+        public string material_inhouse_info_1 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_1 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_inhouse_info_1b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_1b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_inhouse_cost_sgd_1 { get; set; }
@@ -129,10 +138,19 @@ namespace CostNAGAPI.Models
         public double material_inhouse_percentage_target_price_1 { get; set; }
 
         [Column(TypeName = "character varying(30)")]
-        public double material_inhouse_name_2 { get; set; }
+        public string material_inhouse_name_2 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_inhouse_info_2 { get; set; }
+        public string material_inhouse_info_2 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_2 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_inhouse_info_2b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_2b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_inhouse_cost_sgd_2 { get; set; }
@@ -141,10 +159,19 @@ namespace CostNAGAPI.Models
         public double material_inhouse_percentage_target_price_2 { get; set; }
 
         [Column(TypeName = "character varying(30)")]
-        public double material_inhouse_name_3 { get; set; }
+        public string material_inhouse_name_3 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_inhouse_info_3 { get; set; }
+        public string material_inhouse_info_3 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_3 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_inhouse_info_3b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_inhouse_value_3b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_inhouse_cost_sgd_3 { get; set; }
@@ -155,10 +182,19 @@ namespace CostNAGAPI.Models
 
         ////////////Material Outside
         [Column(TypeName = "character varying(30)")]
-        public double material_outside_name_1 { get; set; }
+        public string material_outside_name_1 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_outside_info_1 { get; set; }
+        public string material_outside_info_1 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_1 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_outside_info_1b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_1b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_outside_cost_sgd_1 { get; set; }
@@ -167,10 +203,19 @@ namespace CostNAGAPI.Models
         public double material_outside_percentage_target_price_1 { get; set; }
 
         [Column(TypeName = "character varying(30)")]
-        public double material_outside_name_2 { get; set; }
+        public string material_outside_name_2 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_outside_info_2 { get; set; }
+        public string material_outside_info_2 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_2 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_outside_info_2b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_2b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_outside_cost_sgd_2 { get; set; }
@@ -179,16 +224,29 @@ namespace CostNAGAPI.Models
         public double material_outside_percentage_target_price_2 { get; set; }
 
         [Column(TypeName = "character varying(30)")]
-        public double material_outside_name_3 { get; set; }
+        public string material_outside_name_3 { get; set; }
 
         [Column(TypeName = "character varying(50)")]
-        public double material_outside_info_3 { get; set; }
+        public string material_outside_info_3 { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_3 { get; set; }
+
+        [Column(TypeName = "character varying(50)")]
+        public string material_outside_info_3b { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double material_outside_value_3b { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_outside_cost_sgd_3 { get; set; }
 
         [Column(TypeName = "double precision")]
         public double material_outside_percentage_target_price_3 { get; set; }
+
+        /// <summary>
+        /// Direct Material 
+        /// </summary>
 
         [Column(TypeName = "double precision")]
         public double direct_material_cost { get; set; }
