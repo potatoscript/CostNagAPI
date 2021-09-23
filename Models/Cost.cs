@@ -297,6 +297,9 @@ namespace CostNAGAPI.Models
         public double packing_material_percentage { get; set; }
 
         [Column(TypeName = "double precision")]
+        public double special_package_cost { get; set; }
+
+        [Column(TypeName = "double precision")]
         public double packing_material_cost { get; set; }
 
         [Column(TypeName = "double precision")]

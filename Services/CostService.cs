@@ -114,6 +114,7 @@ namespace CostNAGAPI.Services
                 indirect_cost = cost.indirect_cost,
                 indirect_cost_percentage = cost.indirect_cost_percentage,
                 packing_material_percentage = cost.packing_material_percentage,
+                special_package_cost = cost.special_package_cost,
                 packing_material_cost = cost.packing_material_cost,
                 packing_material_cost_percentage = cost.packing_material_cost_percentage,
                 administration_percentage = cost.administration_percentage,
@@ -388,6 +389,7 @@ namespace CostNAGAPI.Services
                 _cost.indirect_cost = cost.indirect_cost;
                 _cost.indirect_cost_percentage = cost.indirect_cost_percentage;
                 _cost.packing_material_percentage = cost.packing_material_percentage;
+                _cost.special_package_cost = cost.special_package_cost;
                 _cost.packing_material_cost = cost.packing_material_cost;
                 _cost.packing_material_cost_percentage = cost.packing_material_cost_percentage;
                 _cost.administration_percentage = cost.administration_percentage;
