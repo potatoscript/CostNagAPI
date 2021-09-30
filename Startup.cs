@@ -38,6 +38,7 @@ namespace CostNAGAPI
             services.AddDbContext<CostDbContext>(options => options.UseNpgsql(ConnectionString));
             
             services.AddTransient<CostService>();
+            services.AddTransient<ProcessService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -29,6 +29,7 @@ namespace CostNAGAPI.Services
                 revision_no = cost.revision_no,
                 checked_date = cost.checked_date,
                 approved_by = cost.approved_by,
+                expired_by = cost.expired_by,
                 customer = cost.customer,
                 parts_code = cost.parts_code,
                 item = cost.item,
@@ -278,14 +279,294 @@ namespace CostNAGAPI.Services
 
         }
 
+       
+
+        public CostWithProcessVM GetCostWithProcesses(int costId)
+        {
+            var _cost = _context.Costs
+                .Where(n => n.CostId == costId)
+                .Select(n => new CostWithProcessVM()
+                {
+                    doc_no = n.doc_no,
+                    ProcessId = n.Cost_Processes.Select(n => n.Process.ProcessId).ToList()
+                }).FirstOrDefault();
+
+            return _cost;
+
+        }
 
         //public List<Cost> GetAllCost()
         //{
         //    return _context.Costs.ToList();
         //}
         public List<Cost> GetAllCost() => _context.Costs.ToList();
-        public Cost GetCostById(int costId) => _context.Costs.FirstOrDefault(n => n.CostId == costId);
+        //public Cost GetCostById(int costId) => _context.Costs.FirstOrDefault(n => n.CostId == costId);
+        public Cost GetCostById(int costId)
+        {
+            var _costWithProcess = _context.Costs
+                .Where(n => n.CostId == costId)
+                .Select(cost => new Cost()
+            {
+                plant = cost.plant,
+                item_spec = cost.item_spec,
+                issue_date = cost.issue_date,
+                section = cost.section,
+                doc_no = cost.doc_no,
+                wr_no = cost.wr_no,
+                sales = cost.sales,
+                revision_no = cost.revision_no,
+                checked_date = cost.checked_date,
+                approved_by = cost.approved_by,
+                expired_by = cost.expired_by,
+                customer = cost.customer,
+                parts_code = cost.parts_code,
+                item = cost.item,
+                product = cost.product,
+                product_type = cost.product_type,
+                size = cost.size,
+                business_type = cost.business_type,
+                qty_month = cost.qty_month,
+                exchange_rate = cost.exchange_rate,
+                target_price_bht = cost.target_price_bht,
+                target_price_export = cost.target_price_export,
+                production_qty_day = cost.production_qty_day,
+                working_day = cost.working_day,
+                rubber_material_name = cost.rubber_material_name,
+                rubber_database_price_current = cost.rubber_database_price_current,
+                rubber_database_price_new = cost.rubber_database_price_new,
+                rubber_price_kg = cost.rubber_price_kg,
+                rubber_mixing_process_cost = cost.rubber_mixing_process_cost,
+                rubber_weight_g = cost.rubber_weight_g,
+                rubber_weight_kg = cost.rubber_weight_kg,
+                rubber_yield_rate = cost.rubber_yield_rate,
+                rubber_weight_kg_yieldrate = cost.rubber_weight_kg_yieldrate,
+                rubber_cost_sgd = cost.rubber_cost_sgd,
+                rubber_percentage_target_price = cost.rubber_percentage_target_price,
 
+                material_inhouse_name_1 = cost.material_inhouse_name_1,
+                material_inhouse_info_1 = cost.material_inhouse_info_1,
+                material_inhouse_value_1 = cost.material_inhouse_value_1,
+                material_inhouse_info_1b = cost.material_inhouse_info_1b,
+                material_inhouse_value_1b = cost.material_inhouse_value_1b,
+                material_inhouse_cost_sgd_1 = cost.material_inhouse_cost_sgd_1,
+                material_inhouse_percentage_target_price_1 = cost.material_inhouse_percentage_target_price_1,
+                material_inhouse_name_2 = cost.material_inhouse_name_2,
+                material_inhouse_info_2 = cost.material_inhouse_info_2,
+                material_inhouse_value_2 = cost.material_inhouse_value_2,
+                material_inhouse_info_2b = cost.material_inhouse_info_2b,
+                material_inhouse_value_2b = cost.material_inhouse_value_2b,
+                material_inhouse_cost_sgd_2 = cost.material_inhouse_cost_sgd_2,
+                material_inhouse_percentage_target_price_2 = cost.material_inhouse_percentage_target_price_2,
+                material_inhouse_name_3 = cost.material_inhouse_name_3,
+                material_inhouse_info_3 = cost.material_inhouse_info_3,
+                material_inhouse_value_3 = cost.material_inhouse_value_3,
+                material_inhouse_info_3b = cost.material_inhouse_info_3b,
+                material_inhouse_value_3b = cost.material_inhouse_value_3b,
+                material_inhouse_cost_sgd_3 = cost.material_inhouse_cost_sgd_3,
+                material_inhouse_percentage_target_price_3 = cost.material_inhouse_percentage_target_price_3,
+
+                material_outside_name_1 = cost.material_outside_name_1,
+                material_outside_info_1 = cost.material_outside_info_1,
+                material_outside_value_1 = cost.material_outside_value_1,
+                material_outside_info_1b = cost.material_outside_info_1b,
+                material_outside_value_1b = cost.material_outside_value_1b,
+                material_outside_cost_sgd_1 = cost.material_outside_cost_sgd_1,
+                material_outside_percentage_target_price_1 = cost.material_outside_percentage_target_price_1,
+                material_outside_name_2 = cost.material_outside_name_2,
+                material_outside_info_2 = cost.material_outside_info_2,
+                material_outside_value_2 = cost.material_outside_value_2,
+                material_outside_info_2b = cost.material_outside_info_2b,
+                material_outside_value_2b = cost.material_outside_value_2b,
+                material_outside_cost_sgd_2 = cost.material_outside_cost_sgd_2,
+                material_outside_percentage_target_price_2 = cost.material_outside_percentage_target_price_2,
+                material_outside_name_3 = cost.material_outside_name_3,
+                material_outside_info_3 = cost.material_outside_info_3,
+                material_outside_value_3 = cost.material_outside_value_3,
+                material_outside_info_3b = cost.material_outside_info_3b,
+                material_outside_value_3b = cost.material_outside_value_3b,
+                material_outside_cost_sgd_3 = cost.material_outside_cost_sgd_3,
+                material_outside_percentage_target_price_3 = cost.material_outside_percentage_target_price_3,
+
+                direct_material_cost = cost.direct_material_cost,
+                direct_material_cost_percentage = cost.direct_material_cost_percentage,
+                sub_material_percentage = cost.sub_material_percentage,
+                sub_material_cost = cost.sub_material_cost,
+                sub_material_cost_percentage = cost.sub_material_cost_percentage,
+                direct_process_cost = cost.direct_process_cost,
+                direct_process_cost_percentage = cost.direct_process_cost_percentage,
+                total_direct_cost = cost.total_direct_cost,
+                total_direct_cost_percentage = cost.total_direct_cost_percentage,
+                defective_percentage = cost.defective_percentage,
+                defective_cost = cost.defective_cost,
+                defective_cost_percentage = cost.defective_cost_percentage,
+                indirect_percentage = cost.indirect_percentage,
+                indirect_cost = cost.indirect_cost,
+                indirect_cost_percentage = cost.indirect_cost_percentage,
+                packing_material_percentage = cost.packing_material_percentage,
+                special_package_cost = cost.special_package_cost,
+                packing_material_cost = cost.packing_material_cost,
+                packing_material_cost_percentage = cost.packing_material_cost_percentage,
+                administration_percentage = cost.administration_percentage,
+                administration_cost = cost.administration_cost,
+                administration_cost_percentage = cost.administration_cost_percentage,
+                plant_retail_percentage = cost.plant_retail_percentage,
+                plant_retail_cost = cost.plant_retail_cost,
+                plant_retail_cost_percentage = cost.plant_retail_cost_percentage,
+                moldjig_percentage = cost.moldjig_percentage,
+                moldjig_cost = cost.moldjig_cost,
+                moldjig_cost_percentage = cost.moldjig_cost_percentage,
+                die_percentage = cost.die_percentage,
+                die_cost = cost.die_cost,
+                die_cost_percentage = cost.die_cost_percentage,
+                note = cost.note,
+                net_included_tooling_cost = cost.net_included_tooling_cost,
+                net_included_tooling_cost_percentage = cost.net_included_tooling_cost_percentage,
+                net_exclude_tooling_cost = cost.net_exclude_tooling_cost,
+                net_exclude_tooling_cost_percentage = cost.net_exclude_tooling_cost_percentage,
+
+                tooling_list_description_1 = cost.tooling_list_description_1,
+                tooling_list_type_1 = cost.tooling_list_type_1,
+                tooling_list_source_1 = cost.tooling_list_source_1,
+                tooling_list_qty_1 = cost.tooling_list_qty_1,
+                tooling_list_unit_1 = cost.tooling_list_unit_1,
+                tooling_list_price_1 = cost.tooling_list_price_1,
+                tooling_list_amount_jpy_1 = cost.tooling_list_amount_jpy_1,
+                tooling_list_amount_usd_1 = cost.tooling_list_amount_usd_1,
+
+                tooling_list_description_2 = cost.tooling_list_description_2,
+                tooling_list_type_2 = cost.tooling_list_type_2,
+                tooling_list_source_2 = cost.tooling_list_source_2,
+                tooling_list_qty_2 = cost.tooling_list_qty_2,
+                tooling_list_unit_2 = cost.tooling_list_unit_2,
+                tooling_list_price_2 = cost.tooling_list_price_2,
+                tooling_list_amount_jpy_2 = cost.tooling_list_amount_jpy_2,
+                tooling_list_amount_usd_2 = cost.tooling_list_amount_usd_2,
+
+                tooling_list_description_3 = cost.tooling_list_description_3,
+                tooling_list_type_3 = cost.tooling_list_type_3,
+                tooling_list_source_3 = cost.tooling_list_source_3,
+                tooling_list_qty_3 = cost.tooling_list_qty_3,
+                tooling_list_unit_3 = cost.tooling_list_unit_3,
+                tooling_list_price_3 = cost.tooling_list_price_3,
+                tooling_list_amount_jpy_3 = cost.tooling_list_amount_jpy_3,
+                tooling_list_amount_usd_3 = cost.tooling_list_amount_usd_3,
+
+                tooling_list_description_4 = cost.tooling_list_description_4,
+                tooling_list_type_4 = cost.tooling_list_type_4,
+                tooling_list_source_4 = cost.tooling_list_source_4,
+                tooling_list_qty_4 = cost.tooling_list_qty_4,
+                tooling_list_unit_4 = cost.tooling_list_unit_4,
+                tooling_list_price_4 = cost.tooling_list_price_4,
+                tooling_list_amount_jpy_4 = cost.tooling_list_amount_jpy_4,
+                tooling_list_amount_usd_4 = cost.tooling_list_amount_usd_4,
+
+                tooling_list_description_5 = cost.tooling_list_description_5,
+                tooling_list_type_5 = cost.tooling_list_type_5,
+                tooling_list_source_5 = cost.tooling_list_source_5,
+                tooling_list_qty_5 = cost.tooling_list_qty_5,
+                tooling_list_unit_5 = cost.tooling_list_unit_5,
+                tooling_list_price_5 = cost.tooling_list_price_5,
+                tooling_list_amount_jpy_5 = cost.tooling_list_amount_jpy_5,
+                tooling_list_amount_usd_5 = cost.tooling_list_amount_usd_5,
+
+                tooling_list_description_6 = cost.tooling_list_description_6,
+                tooling_list_type_6 = cost.tooling_list_type_6,
+                tooling_list_source_6 = cost.tooling_list_source_6,
+                tooling_list_qty_6 = cost.tooling_list_qty_6,
+                tooling_list_unit_6 = cost.tooling_list_unit_6,
+                tooling_list_price_6 = cost.tooling_list_price_6,
+                tooling_list_amount_jpy_6 = cost.tooling_list_amount_jpy_6,
+                tooling_list_amount_usd_6 = cost.tooling_list_amount_usd_6,
+
+                tooling_list_description_7 = cost.tooling_list_description_7,
+                tooling_list_type_7 = cost.tooling_list_type_7,
+                tooling_list_source_7 = cost.tooling_list_source_7,
+                tooling_list_qty_7 = cost.tooling_list_qty_7,
+                tooling_list_unit_7 = cost.tooling_list_unit_7,
+                tooling_list_price_7 = cost.tooling_list_price_7,
+                tooling_list_amount_jpy_7 = cost.tooling_list_amount_jpy_7,
+                tooling_list_amount_usd_7 = cost.tooling_list_amount_usd_7,
+
+                tooling_list_description_8 = cost.tooling_list_description_8,
+                tooling_list_type_8 = cost.tooling_list_type_8,
+                tooling_list_source_8 = cost.tooling_list_source_8,
+                tooling_list_qty_8 = cost.tooling_list_qty_8,
+                tooling_list_unit_8 = cost.tooling_list_unit_8,
+                tooling_list_price_8 = cost.tooling_list_price_8,
+                tooling_list_amount_jpy_8 = cost.tooling_list_amount_jpy_8,
+                tooling_list_amount_usd_8 = cost.tooling_list_amount_usd_8,
+
+                tooling_list_description_9 = cost.tooling_list_description_9,
+                tooling_list_type_9 = cost.tooling_list_type_9,
+                tooling_list_source_9 = cost.tooling_list_source_9,
+                tooling_list_qty_9 = cost.tooling_list_qty_9,
+                tooling_list_unit_9 = cost.tooling_list_unit_9,
+                tooling_list_price_9 = cost.tooling_list_price_9,
+                tooling_list_amount_jpy_9 = cost.tooling_list_amount_jpy_9,
+                tooling_list_amount_usd_9 = cost.tooling_list_amount_usd_9,
+
+                tooling_list_description_10 = cost.tooling_list_description_10,
+                tooling_list_type_10 = cost.tooling_list_type_10,
+                tooling_list_source_10 = cost.tooling_list_source_10,
+                tooling_list_qty_10 = cost.tooling_list_qty_10,
+                tooling_list_unit_10 = cost.tooling_list_unit_10,
+                tooling_list_price_10 = cost.tooling_list_price_10,
+                tooling_list_amount_jpy_10 = cost.tooling_list_amount_jpy_10,
+                tooling_list_amount_usd_10 = cost.tooling_list_amount_usd_10,
+
+                tooling_list_description_11 = cost.tooling_list_description_11,
+                tooling_list_type_11 = cost.tooling_list_type_11,
+                tooling_list_source_11 = cost.tooling_list_source_11,
+                tooling_list_qty_11 = cost.tooling_list_qty_11,
+                tooling_list_unit_11 = cost.tooling_list_unit_11,
+                tooling_list_price_11 = cost.tooling_list_price_11,
+                tooling_list_amount_jpy_11 = cost.tooling_list_amount_jpy_11,
+                tooling_list_amount_usd_11 = cost.tooling_list_amount_usd_11,
+
+                tooling_list_description_12 = cost.tooling_list_description_12,
+                tooling_list_type_12 = cost.tooling_list_type_12,
+                tooling_list_source_12 = cost.tooling_list_source_12,
+                tooling_list_qty_12 = cost.tooling_list_qty_12,
+                tooling_list_unit_12 = cost.tooling_list_unit_12,
+                tooling_list_price_12 = cost.tooling_list_price_12,
+                tooling_list_amount_jpy_12 = cost.tooling_list_amount_jpy_12,
+                tooling_list_amount_usd_12 = cost.tooling_list_amount_usd_12,
+
+                tooling_list_description_13 = cost.tooling_list_description_13,
+                tooling_list_type_13 = cost.tooling_list_type_13,
+                tooling_list_source_13 = cost.tooling_list_source_13,
+                tooling_list_qty_13 = cost.tooling_list_qty_13,
+                tooling_list_unit_13 = cost.tooling_list_unit_13,
+                tooling_list_price_13 = cost.tooling_list_price_13,
+                tooling_list_amount_jpy_13 = cost.tooling_list_amount_jpy_13,
+                tooling_list_amount_usd_13 = cost.tooling_list_amount_usd_13,
+
+                tooling_list_description_14 = cost.tooling_list_description_14,
+                tooling_list_type_14 = cost.tooling_list_type_14,
+                tooling_list_source_14 = cost.tooling_list_source_14,
+                tooling_list_qty_14 = cost.tooling_list_qty_14,
+                tooling_list_unit_14 = cost.tooling_list_unit_14,
+                tooling_list_price_14 = cost.tooling_list_price_14,
+                tooling_list_amount_jpy_14 = cost.tooling_list_amount_jpy_14,
+                tooling_list_amount_usd_14 = cost.tooling_list_amount_usd_14,
+
+                tooling_list_description_15 = cost.tooling_list_description_15,
+                tooling_list_type_15 = cost.tooling_list_type_15,
+                tooling_list_source_15 = cost.tooling_list_source_15,
+                tooling_list_qty_15 = cost.tooling_list_qty_15,
+                tooling_list_unit_15 = cost.tooling_list_unit_15,
+                tooling_list_price_15 = cost.tooling_list_price_15,
+                tooling_list_amount_jpy_15 = cost.tooling_list_amount_jpy_15,
+                tooling_list_amount_usd_15 = cost.tooling_list_amount_usd_15,
+
+                tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd,
+
+                //process_cost = cost.cost_Processes.Select(n => n.Process.process_cost).ToList()
+
+            }).FirstOrDefault();
+
+            return _costWithProcess;
+        }
         public Cost UpdateCostById(int costId, Cost cost)
         {
             var _cost = _context.Costs.FirstOrDefault(n => n.CostId == costId);
@@ -303,6 +584,7 @@ namespace CostNAGAPI.Services
                 _cost.revision_no = cost.revision_no;
                 _cost.checked_date = cost.checked_date;
                 _cost.approved_by = cost.approved_by;
+                _cost.expired_by = cost.expired_by;
                 _cost.customer = cost.customer;
                 _cost.parts_code = cost.parts_code;
                 _cost.item = cost.item;

@@ -2,15 +2,17 @@
 using CostNAG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
     [DbContext(typeof(CostDbContext))]
-    partial class CostDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210928023113_Added Processes")]
+    partial class AddedProcesses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -732,28 +734,6 @@ namespace CostNAGAPI.Migrations
                     b.ToTable("Costs");
                 });
 
-            modelBuilder.Entity("CostNAGAPI.Models.Cost_Process", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("CostId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProcessId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CostId");
-
-                    b.HasIndex("ProcessId");
-
-                    b.ToTable("Costs_Processes");
-                });
-
             modelBuilder.Entity("CostNAGAPI.Models.Process", b =>
                 {
                     b.Property<int>("ProcessId")
@@ -782,35 +762,6 @@ namespace CostNAGAPI.Migrations
                     b.HasKey("ProcessId");
 
                     b.ToTable("Processes");
-                });
-
-            modelBuilder.Entity("CostNAGAPI.Models.Cost_Process", b =>
-                {
-                    b.HasOne("CostNAGAPI.Models.Cost", "Cost")
-                        .WithMany("cost_Processes")
-                        .HasForeignKey("CostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CostNAGAPI.Models.Process", "Process")
-                        .WithMany("cost_Processes")
-                        .HasForeignKey("ProcessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cost");
-
-                    b.Navigation("Process");
-                });
-
-            modelBuilder.Entity("CostNAGAPI.Models.Cost", b =>
-                {
-                    b.Navigation("cost_Processes");
-                });
-
-            modelBuilder.Entity("CostNAGAPI.Models.Process", b =>
-                {
-                    b.Navigation("cost_Processes");
                 });
 #pragma warning restore 612, 618
         }

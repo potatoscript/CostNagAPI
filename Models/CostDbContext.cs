@@ -23,7 +23,23 @@ namespace CostNAG.Models
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cost_Process>()
+                .HasOne(a => a.Cost)
+                .WithMany(b => b.Cost_Processes)
+                .HasForeignKey(c => c.CostId);
+
+            modelBuilder.Entity<Cost_Process>()
+                .HasOne(a => a.Process)
+                .WithMany(b => b.Cost_Processes)
+                .HasForeignKey(c => c.ProcessId);
+        }
+
+
         public DbSet<Cost> Costs { get; set; }
+        public DbSet<Process> Processes { get; set; }
+        public DbSet<Cost_Process> Costs_Processes { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

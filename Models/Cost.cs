@@ -41,6 +41,9 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "character varying(10)")]
         public string approved_by { get; set; }
 
+        [Column(TypeName = "character varying(10)")]
+        public string expired_by { get; set; }
+
         [Column(TypeName = "character varying(20)")]
         public string customer { get; set; }
 
@@ -739,7 +742,16 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "double precision")]
         public double tooling_list_total_amount_usd { get; set; }
 
+
+        //Navigation Properties
+        public List<Cost_Process> Cost_Processes { get; set; }
+
+
     }
+
+
+
+
 }
 
 
