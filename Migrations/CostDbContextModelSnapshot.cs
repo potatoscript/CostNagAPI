@@ -761,23 +761,113 @@ namespace CostNAGAPI.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<double>("daily_amount")
+                    b.Property<double>("area")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("daily_percentage")
+                    b.Property<double>("capacity")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("daily_qty")
-                        .HasColumnType("integer");
+                    b.Property<double>("charge_minute")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("consumption_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("consumption_kwh")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("consumption_rate")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("cycle_time_minute")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("cycle_time_second")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("direct_labour_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("direct_process_cost")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("doc_no")
                         .HasColumnType("character varying(20)");
 
-                    b.Property<double>("process_cost")
+                    b.Property<double>("double_process")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("working_day")
+                    b.Property<double>("efficiency")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("labor_cost_percentage")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_cost_percentage")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("machine_qty")
                         .HasColumnType("integer");
+
+                    b.Property<double>("machine_utility_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("overhead_cost_percentage")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("plant_maintenance")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("process_name")
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<double>("production_capacity")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("remark")
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<int>("shift")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("special_material")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("time_g")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("time_second")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("total_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("total_labour_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("total_machine_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("total_machine_cost_10percentage")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("utility_electric")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("worker")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("working_days")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("working_time_daily")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("working_time_monthly")
+                        .HasColumnType("double precision");
 
                     b.HasKey("ProcessId");
 
@@ -787,13 +877,13 @@ namespace CostNAGAPI.Migrations
             modelBuilder.Entity("CostNAGAPI.Models.Cost_Process", b =>
                 {
                     b.HasOne("CostNAGAPI.Models.Cost", "Cost")
-                        .WithMany("cost_Processes")
+                        .WithMany("Cost_Processes")
                         .HasForeignKey("CostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CostNAGAPI.Models.Process", "Process")
-                        .WithMany("cost_Processes")
+                        .WithMany()
                         .HasForeignKey("ProcessId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -805,12 +895,7 @@ namespace CostNAGAPI.Migrations
 
             modelBuilder.Entity("CostNAGAPI.Models.Cost", b =>
                 {
-                    b.Navigation("cost_Processes");
-                });
-
-            modelBuilder.Entity("CostNAGAPI.Models.Process", b =>
-                {
-                    b.Navigation("cost_Processes");
+                    b.Navigation("Cost_Processes");
                 });
 #pragma warning restore 612, 618
         }
