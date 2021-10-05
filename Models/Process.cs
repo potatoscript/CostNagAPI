@@ -8,6 +8,7 @@ namespace CostNAGAPI.Models
 {
     public class Process
     {
+
         public int ProcessId { get; set; }
 
         [Column(TypeName = "character varying(20)")]
@@ -16,32 +17,29 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "character varying(20)")]
         public string process_name { get; set; }
 
-        [Column(TypeName = "character varying(20)")]
-        public string remark { get; set; }
-
-        [Column(TypeName = "integer")]
-        public int working_days { get; set; }
+        [Column(TypeName = "double precision")]
+        public double working_day { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double working_time_daily { get; set; }
+        public double working_time_day { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double working_time_monthly { get; set; }
+        public double working_time_month { get; set; }
 
-        [Column(TypeName = "integer")]
-        public int shift { get; set; }
+        [Column(TypeName = "double precision")]
+        public double shift { get; set; }
 
         [Column(TypeName = "double precision")]
         public double worker { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double direct_labour_cost { get; set; }
+        public double direct_labour { get; set; }
 
         [Column(TypeName = "double precision")]
         public double total_labour_cost { get; set; }
 
-        [Column(TypeName = "integer")]
-        public int machine_qty { get; set; }
+        [Column(TypeName = "double precision")]
+        public double machine_qty { get; set; }
 
         [Column(TypeName = "double precision")]
         public double area { get; set; }
@@ -53,19 +51,31 @@ namespace CostNAGAPI.Models
         public double plant_maintenance { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double machine_cost { get; set; }
+        public double plant_maintenance_unit { get; set; }
 
         [Column(TypeName = "double precision")]
         public double total_machine_cost { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double total_machine_cost_10percentage { get; set; }
+        public double machine_usage_day { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double machine_cost_month { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double machine_cost_month_percentage { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double machine_cost_month_percentage_unit { get; set; }
 
         [Column(TypeName = "double precision")]
         public double consumption_kwh { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double consumption_cost { get; set; }
+        public double consumption_unit { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double consumption_sgd { get; set; }
 
         [Column(TypeName = "double precision")]
         public double consumption_rate { get; set; }
@@ -77,16 +87,19 @@ namespace CostNAGAPI.Models
         public double machine_utility_cost { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double total_cost { get; set; }
+        public double labour_electric_cost { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double charge_minute { get; set; }
+        public double charge { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double cycle_time_second { get; set; }
+        public double cycle_time { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double time_second { get; set; }
+        public double cycle_time_unit { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double time { get; set; }
 
         [Column(TypeName = "double precision")]
         public double capacity { get; set; }
@@ -101,16 +114,16 @@ namespace CostNAGAPI.Models
         public double production_capacity { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double cycle_time_minute { get; set; }
+        public double production_cycle_time { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double double_process { get; set; }
+        public double special_input { get; set; }
 
         [Column(TypeName = "double precision")]
         public double direct_process_cost { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double labor_cost_percentage { get; set; }
+        public double labour_cost_percentage{ get; set; }
 
         [Column(TypeName = "double precision")]
         public double machine_cost_percentage { get; set; }
@@ -118,6 +131,24 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "double precision")]
         public double overhead_cost_percentage { get; set; }
 
+        [Column(TypeName = "double precision")]
+        public double total_cost_percentage { get; set; }
+
+        //Navigation Properties
+        public List<Cost_Process> Cost_Processes { get; set; }
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
