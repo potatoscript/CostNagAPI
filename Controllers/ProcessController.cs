@@ -28,8 +28,16 @@ namespace CostNAGAPI.Controllers
             return Ok();
         }
 
+        [HttpGet("get-process-by-docno/{id}")]
+        public IActionResult GetProcessByDocNo(string id)
+        {
+            var process = _processService.GetProcessByDocNo(id);
+
+            return Ok(process);
+        }
+
         [HttpGet("get-process-by-id/{id}")]
-        public IActionResult GetProcessById(string id)
+        public IActionResult GetProcessById(int id)
         {
             var process = _processService.GetProcessById(id);
 

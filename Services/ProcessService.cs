@@ -70,8 +70,9 @@ namespace CostNAGAPI.Services
 
         }
 
+        public Process GetProcessById(int processId) => _context.Processes.FirstOrDefault(n => n.ProcessId == processId);
 
-        public List<Process> GetProcessById(string doc_no)
+        public List<Process> GetProcessByDocNo(string doc_no)
         {
             var _process = _context.Processes
                 .Where(n => n.doc_no == doc_no).ToList();
