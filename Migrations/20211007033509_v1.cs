@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
-    public partial class addModel : Migration
+    public partial class v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -266,6 +266,7 @@ namespace CostNAGAPI.Migrations
                     working_time_month = table.Column<double>(type: "double precision", nullable: false),
                     shift = table.Column<double>(type: "double precision", nullable: false),
                     worker = table.Column<double>(type: "double precision", nullable: false),
+                    direct_labour_unit = table.Column<double>(type: "double precision", nullable: false),
                     direct_labour = table.Column<double>(type: "double precision", nullable: false),
                     total_labour_cost = table.Column<double>(type: "double precision", nullable: false),
                     machine_qty = table.Column<double>(type: "double precision", nullable: false),

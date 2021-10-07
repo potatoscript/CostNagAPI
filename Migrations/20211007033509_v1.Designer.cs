@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CostNAGAPI.Migrations
 {
     [DbContext(typeof(CostDbContext))]
-    [Migration("20211004014355_v1")]
+    [Migration("20211007033509_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -769,10 +769,7 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("capacity")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("charge_minute")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("consumption_cost")
+                    b.Property<double>("charge")
                         .HasColumnType("double precision");
 
                     b.Property<double>("consumption_kwh")
@@ -781,13 +778,22 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("consumption_rate")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("cycle_time_minute")
+                    b.Property<double>("consumption_sgd")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("cycle_time_second")
+                    b.Property<double>("consumption_unit")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("direct_labour_cost")
+                    b.Property<double>("cycle_time")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("cycle_time_unit")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("direct_labour")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("direct_labour_unit")
                         .HasColumnType("double precision");
 
                     b.Property<double>("direct_process_cost")
@@ -796,23 +802,32 @@ namespace CostNAGAPI.Migrations
                     b.Property<string>("doc_no")
                         .HasColumnType("character varying(20)");
 
-                    b.Property<double>("double_process")
-                        .HasColumnType("double precision");
-
                     b.Property<double>("efficiency")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("labor_cost_percentage")
+                    b.Property<double>("labour_cost_percentage")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("machine_cost")
+                    b.Property<double>("labour_electric_cost")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_cost_month")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_cost_month_percentage")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_cost_month_percentage_unit")
                         .HasColumnType("double precision");
 
                     b.Property<double>("machine_cost_percentage")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("machine_qty")
-                        .HasColumnType("integer");
+                    b.Property<double>("machine_qty")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("machine_usage_day")
+                        .HasColumnType("double precision");
 
                     b.Property<double>("machine_utility_cost")
                         .HasColumnType("double precision");
@@ -823,28 +838,34 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("plant_maintenance")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("plant_maintenance_unit")
+                        .HasColumnType("double precision");
+
                     b.Property<string>("process_name")
                         .HasColumnType("character varying(20)");
 
                     b.Property<double>("production_capacity")
                         .HasColumnType("double precision");
 
-                    b.Property<string>("remark")
-                        .HasColumnType("character varying(20)");
+                    b.Property<double>("production_cycle_time")
+                        .HasColumnType("double precision");
 
-                    b.Property<int>("shift")
-                        .HasColumnType("integer");
+                    b.Property<double>("shift")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("special_input")
+                        .HasColumnType("double precision");
 
                     b.Property<double>("special_material")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("time")
                         .HasColumnType("double precision");
 
                     b.Property<double>("time_g")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("time_second")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("total_cost")
+                    b.Property<double>("total_cost_percentage")
                         .HasColumnType("double precision");
 
                     b.Property<double>("total_labour_cost")
@@ -853,22 +874,19 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("total_machine_cost")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("total_machine_cost_10percentage")
-                        .HasColumnType("double precision");
-
                     b.Property<double>("utility_electric")
                         .HasColumnType("double precision");
 
                     b.Property<double>("worker")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("working_days")
-                        .HasColumnType("integer");
-
-                    b.Property<double>("working_time_daily")
+                    b.Property<double>("working_day")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("working_time_monthly")
+                    b.Property<double>("working_time_day")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("working_time_month")
                         .HasColumnType("double precision");
 
                     b.HasKey("ProcessId");
@@ -885,7 +903,7 @@ namespace CostNAGAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("CostNAGAPI.Models.Process", "Process")
-                        .WithMany()
+                        .WithMany("Cost_Processes")
                         .HasForeignKey("ProcessId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -896,6 +914,11 @@ namespace CostNAGAPI.Migrations
                 });
 
             modelBuilder.Entity("CostNAGAPI.Models.Cost", b =>
+                {
+                    b.Navigation("Cost_Processes");
+                });
+
+            modelBuilder.Entity("CostNAGAPI.Models.Process", b =>
                 {
                     b.Navigation("Cost_Processes");
                 });

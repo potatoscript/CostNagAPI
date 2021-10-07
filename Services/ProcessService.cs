@@ -27,6 +27,7 @@ namespace CostNAGAPI.Services
                 working_time_month = p.working_time_month,
                 shift = p.shift,
                 worker = p.worker,
+                direct_labour_unit = p.direct_labour_unit,
                 direct_labour = p.direct_labour,
                 total_labour_cost = p.total_labour_cost,
                 machine_qty = p.machine_qty,
@@ -151,6 +152,7 @@ namespace CostNAGAPI.Services
                 _process.working_time_month = process.working_time_month;
                 _process.shift = process.shift;
                 _process.worker = process.worker;
+                _process.direct_labour_unit = process.direct_labour_unit;
                 _process.direct_labour = process.direct_labour;
                 _process.total_labour_cost = process.total_labour_cost;
                 _process.machine_qty = process.machine_qty;

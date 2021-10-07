@@ -300,6 +300,12 @@ namespace CostNAGAPI.Services
         //    return _context.Costs.ToList();
         //}
         public List<Cost> GetAllCost() => _context.Costs.ToList();
+
+        public List<Cost> GetAllDocNo()
+        {
+            return _context.Costs.Select(m => new Cost() { doc_no=m.doc_no }).Distinct().ToList();
+        }
+
         //public Cost GetCostById(int costId) => _context.Costs.FirstOrDefault(n => n.CostId == costId);
         public Cost GetCostById(int costId)
         {

@@ -30,6 +30,14 @@ namespace CostNAGAPI.Controllers
             return Ok(allCosts);
         }
 
+        [HttpGet("get-all-docno")]
+        public IActionResult GetAllDocNo()
+        {
+            var allCosts = _costService.GetAllDocNo();
+
+            return Ok(allCosts);
+        }
+
         [HttpGet("get-cost-by-id/{id}")]
         public IActionResult GetCostById(int id)
         {

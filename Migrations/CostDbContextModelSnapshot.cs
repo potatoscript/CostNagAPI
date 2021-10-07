@@ -791,6 +791,9 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("direct_labour")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("direct_labour_unit")
+                        .HasColumnType("double precision");
+
                     b.Property<double>("direct_process_cost")
                         .HasColumnType("double precision");
 
