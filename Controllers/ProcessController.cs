@@ -36,6 +36,14 @@ namespace CostNAGAPI.Controllers
             return Ok(process);
         }
 
+        [HttpGet("get-process-master")]
+        public IActionResult GetProcessMaster()
+        {
+            var process = _processService.GetProcessMaster();
+
+            return Ok(process);
+        }
+
         [HttpGet("get-process-by-id/{id}")]
         public IActionResult GetProcessById(int id)
         {

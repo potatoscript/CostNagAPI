@@ -38,6 +38,7 @@ namespace CostNAGAPI.Services
                 total_machine_cost = p.total_machine_cost,
                 machine_usage_day = p.machine_usage_day,
                 machine_cost_month = p.machine_cost_month,
+                machine_cost_month2 = p.machine_cost_month2,
                 machine_cost_month_percentage = p.machine_cost_month,
                 machine_cost_month_percentage_unit = p.machine_cost_month_percentage_unit,
                 consumption_kwh = p.consumption_kwh,
@@ -138,6 +139,14 @@ namespace CostNAGAPI.Services
         */
 
 
+        public List<string> GetProcessMaster()
+        {
+            var _process = _context.Processes
+                .Select(m=>m.process_name).Distinct().ToList();
+
+            return _process;
+
+        }
 
         public Process UpdateProcessById(int processId, Process process)
         {
@@ -163,6 +172,7 @@ namespace CostNAGAPI.Services
                 _process.total_machine_cost = process.total_machine_cost;
                 _process.machine_usage_day = process.machine_usage_day;
                 _process.machine_cost_month = process.machine_cost_month;
+                _process.machine_cost_month2 = process.machine_cost_month2;
                 _process.machine_cost_month_percentage = process.machine_cost_month;
                 _process.machine_cost_month_percentage_unit = process.machine_cost_month_percentage_unit;
                 _process.consumption_kwh = process.consumption_kwh;
