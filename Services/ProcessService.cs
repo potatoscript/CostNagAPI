@@ -142,7 +142,7 @@ namespace CostNAGAPI.Services
         public List<string> GetProcessMaster()
         {
             var _process = _context.Processes
-                .Select(m=>m.process_name).Distinct().ToList();
+                .Select(m=>m.process_name).Distinct().OrderBy(m=>m).ToList();
 
             return _process;
 

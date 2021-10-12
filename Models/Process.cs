@@ -14,7 +14,7 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "character varying(20)")]
         public string doc_no { get; set; }
 
-        [Column(TypeName = "character varying(20)")]
+        [Column(TypeName = "character varying(100)")]
         public string process_name { get; set; }
 
         [Column(TypeName = "double precision")]
