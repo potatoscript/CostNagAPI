@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CostNAGAPI.Models
+namespace CostNAGAPI.ViewModels
 {
-    public class ProcessMaster
+    public class CostProcessVM
     {
-        public int ProcessMasterId { get; set; }
+        public int CostProcessId { get; set; }
+
+
+        [Column(TypeName = "character varying(20)")]
+        public string doc_no { get; set; }
 
         [Column(TypeName = "character varying(100)")]
         public string process_name { get; set; }
@@ -33,14 +37,5 @@ namespace CostNAGAPI.Models
 
         [Column(TypeName = "double precision")]
         public double total_cost { get; set; }
-
     }
 }
-
-
-
-
-
-
-
-

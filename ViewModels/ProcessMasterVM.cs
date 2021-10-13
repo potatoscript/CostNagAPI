@@ -10,6 +10,7 @@ namespace CostNAGAPI.ViewModels
         public int ProcessMasterId { get; set; }
 
         public string process_name { get; set; }
+        public string process_type { get; set; }
 
         public double od_min { get; set; }
 
@@ -22,5 +23,7 @@ namespace CostNAGAPI.ViewModels
         public double labor_cost { get; set; }
 
         public double total_cost { get; set; }
+
+        public List<ProcessVM> ProcessMasters { get; set; }
     }
 }

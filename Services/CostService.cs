@@ -36,6 +36,9 @@ namespace CostNAGAPI.Services
                 product = cost.product,
                 product_type = cost.product_type,
                 size = cost.size,
+                item_id = cost.item_id,
+                item_od = cost.item_od,
+                item_w = cost.item_w,
                 business_type = cost.business_type,
                 qty_month = cost.qty_month,
                 exchange_rate = cost.exchange_rate,
@@ -281,19 +284,7 @@ namespace CostNAGAPI.Services
 
        
 
-        public CostWithProcessVM GetCostWithProcesses(int costId)
-        {
-            var _cost = _context.Costs
-                .Where(n => n.CostId == costId)
-                .Select(n => new CostWithProcessVM()
-                {
-                    doc_no = n.doc_no,
-                    ProcessId = n.Cost_Processes.Select(n => n.Process.ProcessId).ToList()
-                }).FirstOrDefault();
 
-            return _cost;
-
-        }
 
         //public List<Cost> GetAllCost()
         //{
@@ -330,6 +321,9 @@ namespace CostNAGAPI.Services
                 product = cost.product,
                 product_type = cost.product_type,
                 size = cost.size,
+                item_id = cost.item_id,
+                item_od = cost.item_od,
+                item_w = cost.item_w,
                 business_type = cost.business_type,
                 qty_month = cost.qty_month,
                 exchange_rate = cost.exchange_rate,
@@ -597,6 +591,9 @@ namespace CostNAGAPI.Services
                 _cost.product = cost.product;
                 _cost.product_type = cost.product_type;
                 _cost.size = cost.size;
+                _cost.item_id = cost.item_id;
+                _cost.item_od = cost.item_od;
+                _cost.item_w = cost.item_w;
                 _cost.business_type = cost.business_type;
                 _cost.qty_month = cost.qty_month;
                 _cost.exchange_rate = cost.exchange_rate;

@@ -23,6 +23,7 @@ namespace CostNAG.Models
 
         }
 
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cost_Process>()
@@ -36,11 +37,12 @@ namespace CostNAG.Models
                 .HasForeignKey(c => c.ProcessId);
         }
 
+        */
 
         public DbSet<Cost> Costs { get; set; }
         public DbSet<Process> Processes { get; set; }
         public DbSet<ProcessMaster> ProcessesMaster { get; set; }
-        public DbSet<Cost_Process> Costs_Processes { get; set; }
+        public DbSet<CostProcess> CostsProcesses { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

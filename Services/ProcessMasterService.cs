@@ -31,6 +31,29 @@ namespace CostNAGAPI.Services
 
         }
 
+        public List<ProcessMasterVM> GetProcessNameByOD(double od)
+        {
+            var _data = _context.ProcessesMaster
+                .Where(n => n.od_min <= od && n.od_max >= od)
+                .Select(d => new { d.process_name, d.process_type })
+                .Distinct()
+                .OrderBy(d => d.process_name)
+                .ToList();
+
+            List<ProcessMasterVM> list = new List<ProcessMasterVM>();
+            foreach (var i in _data)
+            {
+                
+                list.Add(new ProcessMasterVM { 
+                    process_name = i.process_name,
+                    process_type = i.process_type
+                });
+            }
+
+            return list;
+
+        }
+
         public void AddProcessMaster(ProcessMasterVM p)
         {
             var _process = new ProcessMaster()

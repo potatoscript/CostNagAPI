@@ -62,6 +62,12 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "character varying(10)")]
         public string size { get; set; }
 
+        public double item_id { get; set; }
+
+        public double item_od { get; set; }
+
+        public double item_w { get; set; }
+
         [Column(TypeName = "character varying(20)")]
         public string business_type { get; set; }
 
@@ -747,7 +753,7 @@ namespace CostNAGAPI.Models
         public List<int> doc_nos { get; set; }
 
         //Navigation Properties
-        public List<Cost_Process> Cost_Processes { get; set; }
+        public List<CostProcess> Cost_Processes { get; set; }
 
 
     }

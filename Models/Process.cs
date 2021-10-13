@@ -141,7 +141,7 @@ namespace CostNAGAPI.Models
         public double total_cost_percentage { get; set; }
 
         //Navigation Properties
-        public List<Cost_Process> Cost_Processes { get; set; }
+        public List<CostProcess> Cost_Processes { get; set; }
 
     }
 }
