@@ -25,7 +25,10 @@ namespace CostNAGAPI.Services
         public List<ProcessMaster> GetProcessMasterByOD(double od)
         {
             var _data = _context.ProcessesMaster
-                .Where(n => n.od_min <= od && n.od_max >= od).ToList();
+                .Where(n => n.od_min <= od && n.od_max >= od)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
 
             return _data;
 
@@ -59,6 +62,7 @@ namespace CostNAGAPI.Services
             var _process = new ProcessMaster()
             {
                 process_name = p.process_name,
+                process_type = p.process_type,
                 od_min = p.od_min,
                 od_max = p.od_max,
                 overhead_cost = p.overhead_cost,
@@ -77,6 +81,7 @@ namespace CostNAGAPI.Services
             if (_data != null)
             {
                 _data.process_name = data.process_name;
+                _data.process_type = data.process_type;
                 _data.od_min = data.od_min;
                 _data.od_max = data.od_max;
                 _data.overhead_cost = data.overhead_cost;
