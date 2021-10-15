@@ -40,6 +40,7 @@ namespace CostNAGAPI
             services.AddTransient<CostService>();
             services.AddTransient<ProcessService>();
             services.AddTransient<ProcessMasterService>();
+            services.AddTransient<CostProcessService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

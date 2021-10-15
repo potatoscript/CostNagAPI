@@ -21,10 +21,7 @@ namespace CostNAGAPI.Models
         public string process_type { get; set; }
 
         [Column(TypeName = "double precision")]
-        public double od_min { get; set; }
-
-        [Column(TypeName = "double precision")]
-        public double od_max { get; set; }
+        public double item_od { get; set; }
 
         [Column(TypeName = "double precision")]
         public double overhead_cost { get; set; }
