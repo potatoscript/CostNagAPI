@@ -39,6 +39,14 @@ namespace CostNAGAPI.Controllers
             return Ok(process);
         }
 
+        [HttpGet("get-costprocess-by-type/{type}")]
+        public IActionResult GetCostProcessByType(string type)
+        {
+            var process = _processService.GetCostProcessByType(type);
+
+            return Ok(process);
+        }
+
         [HttpPost("delete-costprocess-by-id/{id}")]
         public IActionResult DeleteCostProcessById(int id)
         {

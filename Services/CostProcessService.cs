@@ -34,6 +34,18 @@ namespace CostNAGAPI.Services
 
         }
 
+        public List<CostProcess> GetCostProcessByType(string type)
+        {
+            var _data = _context.CostsProcesses
+                .Where(n => n.process_type == type)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
+
+            return _data;
+
+        }
+
         public void AddCostProcess(CostProcessVM p)
         {
             var _process = new CostProcess()

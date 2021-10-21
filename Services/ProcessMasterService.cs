@@ -34,6 +34,18 @@ namespace CostNAGAPI.Services
 
         }
 
+        public List<ProcessMaster> GetProcessMasterByType(string type)
+        {
+            var _data = _context.ProcessesMaster
+                .Where(n => n.process_type == type)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
+
+            return _data;
+
+        }
+
         public List<ProcessMasterVM> GetProcessNameByOD(double od)
         {
             var _data = _context.ProcessesMaster
