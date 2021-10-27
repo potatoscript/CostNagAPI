@@ -60,6 +60,7 @@ namespace CostNAGAPI
 
             app.UseEndpoints(endpoints =>
             {
+       
                 endpoints.MapControllers();
             });
         }

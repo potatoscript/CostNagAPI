@@ -18,7 +18,11 @@ namespace CostNAGAPI.Services
         }
 
         
-        public List<ProcessMaster> GetAllProcessesMaster() => _context.ProcessesMaster.ToList();
+        public List<ProcessMaster> GetAllProcessesMaster() => 
+            _context.ProcessesMaster
+            .OrderBy(d => d.process_type)
+            .ThenBy(d2 => d2.process_name)
+            .ToList();
 
         public ProcessMaster GetProcessMasterById(int processMasterId) => _context.ProcessesMaster.FirstOrDefault(n => n.ProcessMasterId == processMasterId);
 
@@ -42,6 +46,14 @@ namespace CostNAGAPI.Services
                 .ThenBy(d2 => d2.process_name)
                 .ToList();
 
+            if (type == "Process Type")
+            {
+                _data = _context.ProcessesMaster
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
+            }
+
             return _data;
 
         }
@@ -52,7 +64,8 @@ namespace CostNAGAPI.Services
                 .Where(n => n.od_min <= od && n.od_max >= od)
                 .Select(d => new { d.process_name, d.process_type })
                 .Distinct()
-                .OrderBy(d => d.process_name)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
                 .ToList();
 
             List<ProcessMasterVM> list = new List<ProcessMasterVM>();
