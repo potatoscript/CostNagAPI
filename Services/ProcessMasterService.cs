@@ -58,6 +58,30 @@ namespace CostNAGAPI.Services
 
         }
 
+
+        public List<ProcessMaster> GetProcessMasterByOdType(double od, string type)
+        {
+            var _data = _context.ProcessesMaster
+                .Where(n => n.process_type == type)
+                .Where(n => n.od_min <= od && n.od_max >= od)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
+
+            if (type == "Process Type")
+            {
+                _data = _context.ProcessesMaster
+                .Where(n => n.od_min <= od && n.od_max >= od)
+                .OrderBy(d => d.process_type)
+                .ThenBy(d2 => d2.process_name)
+                .ToList();
+            }
+
+            return _data;
+
+        }
+
+
         public List<ProcessMasterVM> GetProcessNameByOD(double od)
         {
             var _data = _context.ProcessesMaster

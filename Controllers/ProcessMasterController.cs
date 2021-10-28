@@ -46,6 +46,15 @@ namespace CostNAGAPI.Controllers
             return Ok(process);
         }
 
+        [HttpGet("get-processmaster-by-odtype/{od}/{type}")]
+        public IActionResult GetProcessMasterByOD(double od, string type)
+        {
+            var process = _processMasterService.GetProcessMasterByOdType(od, type);
+
+            return Ok(process);
+        }
+
+
         [HttpGet("get-processmaster-by-od/{od}")]
         public IActionResult GetProcessMasterByOD(double od)
         {
@@ -53,6 +62,7 @@ namespace CostNAGAPI.Controllers
 
             return Ok(process);
         }
+
 
         [HttpGet("get-processname-by-od/{od}")]
         public IActionResult GetProcessNameByOD(double od)
