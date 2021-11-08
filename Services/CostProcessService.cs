@@ -26,6 +26,7 @@ namespace CostNAGAPI.Services
         {
             var _data = _context.CostsProcesses
                 .Where(n => n.doc_no == doc_no)
+                .Where(n => n.doc_no != "-")
                 .OrderBy(d => d.process_type)
                 .ThenBy(d2 => d2.process_name)
                 .ToList();
