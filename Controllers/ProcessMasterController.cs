@@ -30,7 +30,7 @@ namespace CostNAGAPI.Controllers
 
 
         [HttpPost("add-processmaster")]
-        public IActionResult AddProcessMaster(ProcessMasterVM process)
+        public IActionResult AddProcessMaster(ProcessMaster process)
         {
             _processMasterService.AddProcessMaster(process);
 

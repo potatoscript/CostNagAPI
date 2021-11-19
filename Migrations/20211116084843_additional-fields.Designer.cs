@@ -3,15 +3,17 @@ using System;
 using CostNAG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
     [DbContext(typeof(CostDbContext))]
-    partial class CostDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211116084843_additional-fields")]
+    partial class additionalfields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,13 +82,7 @@ namespace CostNAGAPI.Migrations
                     b.Property<string>("doc_no")
                         .HasColumnType("character varying(20)");
 
-                    b.Property<double>("exchange_rate_eud")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("exchange_rate_jpy")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("exchange_rate_usd")
+                    b.Property<double>("exchange_rate")
                         .HasColumnType("double precision");
 
                     b.Property<string>("expired_by")
@@ -398,7 +394,13 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("sub_material_percentage")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("target_price_bht")
+                        .HasColumnType("double precision");
+
                     b.Property<double>("target_price_eud")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("target_price_export")
                         .HasColumnType("double precision");
 
                     b.Property<double>("target_price_sgd")
@@ -459,51 +461,6 @@ namespace CostNAGAPI.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<double>("tooling_list_amount_jpy_9")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_1")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_10")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_11")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_12")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_13")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_14")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_15")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_2")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_3")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_4")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_5")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_6")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_7")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_8")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("tooling_list_amount_sgd_9")
                         .HasColumnType("double precision");
 
                     b.Property<double>("tooling_list_amount_usd_1")
@@ -730,9 +687,6 @@ namespace CostNAGAPI.Migrations
 
                     b.Property<string>("tooling_list_source_9")
                         .HasColumnType("character varying(10)");
-
-                    b.Property<double>("tooling_list_total_amount_sgd")
-                        .HasColumnType("double precision");
 
                     b.Property<double>("tooling_list_total_amount_usd")
                         .HasColumnType("double precision");
@@ -1083,7 +1037,19 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("price_kg")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("rubber_sgd")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("rubber_target_price_percentage")
+                        .HasColumnType("double precision");
+
                     b.Property<double>("weight_g")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("weight_kg")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("weight_kg_pcs")
                         .HasColumnType("double precision");
 
                     b.Property<double>("yield_rate")

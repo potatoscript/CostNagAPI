@@ -106,7 +106,7 @@ namespace CostNAGAPI.Services
 
         }
 
-        public void AddProcessMaster(ProcessMasterVM p)
+        public void AddProcessMaster(ProcessMaster p)
         {
             var _process = new ProcessMaster()
             {

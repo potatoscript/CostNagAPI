@@ -16,19 +16,15 @@ namespace CostNAGAPI.Services
             _context = context;
         }
 
-        public void AddCost(Rubber rubber)
+        public void AddRubberData(Rubber r)
         {
             var _rubber = new Rubber()
             {
-                material_name = rubber.material_name,
-                price_kg = rubber.price_kg,
-                mixing_process_cost = rubber.mixing_process_cost,
-                weight_g = rubber.weight_g,
-                weight_kg = rubber.weight_kg,
-                yield_rate = rubber.yield_rate,
-                weight_kg_pcs = rubber.weight_kg_pcs,
-                rubber_sgd = rubber.rubber_sgd,
-                rubber_target_price_percentage = rubber.rubber_target_price_percentage
+                material_name = r.material_name,
+                price_kg = r.price_kg,
+                mixing_process_cost = r.mixing_process_cost,
+                weight_g = r.weight_g,
+                yield_rate = r.yield_rate
             };
 
             _context.Rubbers.Add(_rubber);
@@ -54,11 +50,7 @@ namespace CostNAGAPI.Services
                 _rubber.price_kg = rubber.price_kg;
                 _rubber.mixing_process_cost = rubber.mixing_process_cost;
                 _rubber.weight_g = rubber.weight_g;
-                _rubber.weight_kg = rubber.weight_kg;
                 _rubber.yield_rate = rubber.yield_rate;
-                _rubber.weight_kg_pcs = rubber.weight_kg_pcs;
-                _rubber.rubber_sgd = rubber.rubber_sgd;
-                _rubber.rubber_target_price_percentage = rubber.rubber_target_price_percentage;
 
                 _context.SaveChanges();
             }

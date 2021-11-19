@@ -42,10 +42,10 @@ namespace CostNAGAPI.Controllers
             return Ok(data);
         }
 
-        [HttpPost("add-rubber")]
+        [HttpPost("add-rubber-data")]
         public IActionResult AddRubber(Rubber rubber)
         {
-            _rubberService.AddCost(rubber);
+            _rubberService.AddRubberData(rubber);
 
             return Ok();
         }

@@ -3,15 +3,17 @@ using System;
 using CostNAG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
     [DbContext(typeof(CostDbContext))]
-    partial class CostDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211118003754_exchange rate3")]
+    partial class exchangerate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1083,7 +1085,19 @@ namespace CostNAGAPI.Migrations
                     b.Property<double>("price_kg")
                         .HasColumnType("double precision");
 
+                    b.Property<double>("rubber_sgd")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("rubber_target_price_percentage")
+                        .HasColumnType("double precision");
+
                     b.Property<double>("weight_g")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("weight_kg")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("weight_kg_pcs")
                         .HasColumnType("double precision");
 
                     b.Property<double>("yield_rate")

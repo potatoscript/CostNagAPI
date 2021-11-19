@@ -39,13 +39,25 @@ namespace CostNAGAPI.Services
                 item_id = cost.item_id,
                 item_od = cost.item_od,
                 item_w = cost.item_w,
+                item_w2 = cost.item_w2,
                 business_type = cost.business_type,
                 qty_month = cost.qty_month,
-                exchange_rate = cost.exchange_rate,
-                target_price_bht = cost.target_price_bht,
-                target_price_export = cost.target_price_export,
+                
+                exchange_rate_jpy = cost.exchange_rate_jpy,
+                exchange_rate_usd = cost.exchange_rate_usd,
+                exchange_rate_eud = cost.exchange_rate_eud,
+
+
+                target_price_sgd = cost.target_price_sgd,
+                target_price_usd = cost.target_price_usd,
+                target_price_eud = cost.target_price_eud,
+                target_price_wr_sgd = cost.target_price_wr_sgd,
+                target_price_wr_usd = cost.target_price_wr_usd,
+                target_price_wr_eud = cost.target_price_wr_eud,
+
                 production_qty_day = cost.production_qty_day,
                 working_day = cost.working_day,
+
                 rubber_material_name = cost.rubber_material_name,
                 rubber_database_price_current = cost.rubber_database_price_current,
                 rubber_database_price_new = cost.rubber_database_price_new,
@@ -57,6 +69,18 @@ namespace CostNAGAPI.Services
                 rubber_weight_kg_yieldrate = cost.rubber_weight_kg_yieldrate,
                 rubber_cost_sgd = cost.rubber_cost_sgd,
                 rubber_percentage_target_price = cost.rubber_percentage_target_price,
+
+                rubber_material_name2 = cost.rubber_material_name2,
+                rubber_database_price_current2 = cost.rubber_database_price_current2,
+                rubber_database_price_new2 = cost.rubber_database_price_new2,
+                rubber_price_kg2 = cost.rubber_price_kg2,
+                rubber_mixing_process_cost2 = cost.rubber_mixing_process_cost2,
+                rubber_weight_g2 = cost.rubber_weight_g2,
+                rubber_weight_kg2 = cost.rubber_weight_kg2,
+                rubber_yield_rate2 = cost.rubber_yield_rate2,
+                rubber_weight_kg_yieldrate2 = cost.rubber_weight_kg_yieldrate2,
+                rubber_cost_sgd2 = cost.rubber_cost_sgd2,
+                rubber_percentage_target_price2 = cost.rubber_percentage_target_price2,
 
                 material_inhouse_name_1 = cost.material_inhouse_name_1,
                 material_inhouse_info_1 = cost.material_inhouse_info_1,
@@ -324,13 +348,24 @@ namespace CostNAGAPI.Services
                 item_id = cost.item_id,
                 item_od = cost.item_od,
                 item_w = cost.item_w,
+                item_w2 = cost.item_w2,
                 business_type = cost.business_type,
                 qty_month = cost.qty_month,
-                exchange_rate = cost.exchange_rate,
-                target_price_bht = cost.target_price_bht,
-                target_price_export = cost.target_price_export,
+                
+                exchange_rate_jpy = cost.exchange_rate_jpy,
+                exchange_rate_usd = cost.exchange_rate_usd,
+                exchange_rate_eud = cost.exchange_rate_eud,
+
+                target_price_sgd = cost.target_price_sgd,
+                target_price_usd = cost.target_price_usd,
+                target_price_eud = cost.target_price_eud,
+                target_price_wr_sgd = cost.target_price_wr_sgd,
+                target_price_wr_usd = cost.target_price_wr_usd,
+                target_price_wr_eud = cost.target_price_wr_eud,
+
                 production_qty_day = cost.production_qty_day,
                 working_day = cost.working_day,
+
                 rubber_material_name = cost.rubber_material_name,
                 rubber_database_price_current = cost.rubber_database_price_current,
                 rubber_database_price_new = cost.rubber_database_price_new,
@@ -342,6 +377,18 @@ namespace CostNAGAPI.Services
                 rubber_weight_kg_yieldrate = cost.rubber_weight_kg_yieldrate,
                 rubber_cost_sgd = cost.rubber_cost_sgd,
                 rubber_percentage_target_price = cost.rubber_percentage_target_price,
+
+                rubber_material_name2 = cost.rubber_material_name2,
+                rubber_database_price_current2 = cost.rubber_database_price_current2,
+                rubber_database_price_new2 = cost.rubber_database_price_new2,
+                rubber_price_kg2 = cost.rubber_price_kg2,
+                rubber_mixing_process_cost2 = cost.rubber_mixing_process_cost2,
+                rubber_weight_g2 = cost.rubber_weight_g2,
+                rubber_weight_kg2 = cost.rubber_weight_kg2,
+                rubber_yield_rate2 = cost.rubber_yield_rate2,
+                rubber_weight_kg_yieldrate2 = cost.rubber_weight_kg_yieldrate2,
+                rubber_cost_sgd2 = cost.rubber_cost_sgd2,
+                rubber_percentage_target_price2 = cost.rubber_percentage_target_price2,
 
                 material_inhouse_name_1 = cost.material_inhouse_name_1,
                 material_inhouse_info_1 = cost.material_inhouse_info_1,
@@ -594,11 +641,22 @@ namespace CostNAGAPI.Services
                 _cost.item_id = cost.item_id;
                 _cost.item_od = cost.item_od;
                 _cost.item_w = cost.item_w;
+                _cost.item_w2 = cost.item_w2;
                 _cost.business_type = cost.business_type;
                 _cost.qty_month = cost.qty_month;
-                _cost.exchange_rate = cost.exchange_rate;
-                _cost.target_price_bht = cost.target_price_bht;
-                _cost.target_price_export = cost.target_price_export;
+
+                _cost.exchange_rate_jpy = cost.exchange_rate_jpy;
+                _cost.exchange_rate_usd = cost.exchange_rate_usd;
+                _cost.exchange_rate_eud = cost.exchange_rate_eud;
+
+                _cost.target_price_sgd = cost.target_price_sgd;
+                _cost.target_price_usd = cost.target_price_usd;
+                _cost.target_price_eud = cost.target_price_eud;
+
+                _cost.target_price_wr_sgd = cost.target_price_wr_sgd;
+                _cost.target_price_wr_usd = cost.target_price_wr_usd;
+                _cost.target_price_wr_eud = cost.target_price_wr_eud;
+
                 _cost.production_qty_day = cost.production_qty_day;
                 _cost.working_day = cost.working_day;
 
@@ -613,6 +671,18 @@ namespace CostNAGAPI.Services
                 _cost.rubber_weight_kg_yieldrate = cost.rubber_weight_kg_yieldrate;
                 _cost.rubber_cost_sgd = cost.rubber_cost_sgd;
                 _cost.rubber_percentage_target_price = cost.rubber_percentage_target_price;
+
+                _cost.rubber_material_name2 = cost.rubber_material_name2;
+                _cost.rubber_database_price_current2 = cost.rubber_database_price_current2;
+                _cost.rubber_database_price_new2 = cost.rubber_database_price_new2;
+                _cost.rubber_price_kg2 = cost.rubber_price_kg2;
+                _cost.rubber_mixing_process_cost2 = cost.rubber_mixing_process_cost2;
+                _cost.rubber_weight_g2 = cost.rubber_weight_g2;
+                _cost.rubber_weight_kg2 = cost.rubber_weight_kg2;
+                _cost.rubber_yield_rate2 = cost.rubber_yield_rate2;
+                _cost.rubber_weight_kg_yieldrate2 = cost.rubber_weight_kg_yieldrate2;
+                _cost.rubber_cost_sgd2 = cost.rubber_cost_sgd2;
+                _cost.rubber_percentage_target_price2 = cost.rubber_percentage_target_price2;
 
                 _cost.material_inhouse_name_1 = cost.material_inhouse_name_1;
                 _cost.material_inhouse_info_1 = cost.material_inhouse_info_1;
