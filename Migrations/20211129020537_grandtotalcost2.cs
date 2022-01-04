@@ -2,13 +2,13 @@
 
 namespace CostNAGAPI.Migrations
 {
-    public partial class machinecostmonth2 : Migration
+    public partial class grandtotalcost2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<double>(
-                name: "machine_cost_month2",
-                table: "Processes",
+                name: "weight_kg",
+                table: "Rubbers",
                 type: "double precision",
                 nullable: false,
                 defaultValue: 0.0);
@@ -17,8 +17,8 @@ namespace CostNAGAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "machine_cost_month2",
-                table: "Processes");
+                name: "weight_kg",
+                table: "Rubbers");
         }
     }
 }

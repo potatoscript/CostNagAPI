@@ -23,7 +23,19 @@ namespace CostNAGAPI.Models
         public double weight_g { get; set; }
 
         [Column(TypeName = "double precision")]
+        public double weight_kg { get; set; }
+
+        [Column(TypeName = "double precision")]
         public double yield_rate { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double weight_kg_pcs { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double rubber_sgd { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double rubber_target_price_percentage { get; set; }
 
     }
 }

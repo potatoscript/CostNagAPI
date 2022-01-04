@@ -2,27 +2,27 @@
 
 namespace CostNAGAPI.Migrations
 {
-    public partial class sizeod : Migration
+    public partial class grandtotalcost3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<double>(
-                name: "item_id",
-                table: "Costs",
+                name: "rubber_sgd",
+                table: "Rubbers",
                 type: "double precision",
                 nullable: false,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<double>(
-                name: "item_od",
-                table: "Costs",
+                name: "rubber_target_price_percentage",
+                table: "Rubbers",
                 type: "double precision",
                 nullable: false,
                 defaultValue: 0.0);
 
             migrationBuilder.AddColumn<double>(
-                name: "item_w",
-                table: "Costs",
+                name: "weight_kg_pcs",
+                table: "Rubbers",
                 type: "double precision",
                 nullable: false,
                 defaultValue: 0.0);
@@ -31,16 +31,16 @@ namespace CostNAGAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "item_id",
-                table: "Costs");
+                name: "rubber_sgd",
+                table: "Rubbers");
 
             migrationBuilder.DropColumn(
-                name: "item_od",
-                table: "Costs");
+                name: "rubber_target_price_percentage",
+                table: "Rubbers");
 
             migrationBuilder.DropColumn(
-                name: "item_w",
-                table: "Costs");
+                name: "weight_kg_pcs",
+                table: "Rubbers");
         }
     }
 }

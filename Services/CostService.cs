@@ -298,8 +298,36 @@ namespace CostNAGAPI.Services
                 tooling_list_amount_jpy_15 = cost.tooling_list_amount_jpy_15,
                 tooling_list_amount_usd_15 = cost.tooling_list_amount_usd_15,
 
-                tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd
-            };
+                tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd,
+
+                direct_raw_material = cost.direct_raw_material,
+                direct_raw_material_p = cost.direct_raw_material_p,
+                sub_material = cost.sub_material,
+                sub_material_p = cost.sub_material_p,
+                raw_material_cost_sub_total = cost.raw_material_cost_sub_total,
+                raw_material_cost_sub_total_p = cost.raw_material_cost_sub_total_p,
+                labor_cost = cost.labor_cost,
+                labor_cost_p = cost.labor_cost_p,
+                machine_cost = cost.machine_cost,
+                machine_cost_p = cost.machine_cost_p,
+                overhead_cost = cost.overhead_cost,
+                overhead_cost_p = cost.overhead_cost_p,
+                process_cost_sub_total = cost.process_cost_sub_total,
+                process_cost_sub_total_p = cost.process_cost_sub_total_p,
+                defectives = cost.defectives,
+                defectives_p = cost.defectives_p,
+                admin_engin_qc = cost.admin_engin_qc,
+                admin_engin_qc_p = cost.admin_engin_qc_p,
+                tooling_cost = cost.tooling_cost,
+                tooling_cost_p = cost.tooling_cost_p,
+                process_margin_adjust = cost.process_margin_adjust,
+                process_margin_adjust_p = cost.process_margin_adjust_p,
+                other_fixed_cost_sub_total = cost.other_fixed_cost_sub_total,
+                other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p,
+                grand_total_cost = cost.grand_total_cost,
+                grand_total_cost_p = cost.grand_total_cost_p
+
+        };
 
             _context.Costs.Add(_cost);
             _context.SaveChanges();
@@ -608,9 +636,36 @@ namespace CostNAGAPI.Services
 
                 tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd,
 
-                //process_cost = cost.cost_Processes.Select(n => n.Process.process_cost).ToList()
+                    direct_raw_material = cost.direct_raw_material,
+                    direct_raw_material_p = cost.direct_raw_material_p,
+                    sub_material = cost.sub_material,
+                    sub_material_p = cost.sub_material_p,
+                    raw_material_cost_sub_total = cost.raw_material_cost_sub_total,
+                    raw_material_cost_sub_total_p = cost.raw_material_cost_sub_total_p,
+                    labor_cost = cost.labor_cost,
+                    labor_cost_p = cost.labor_cost_p,
+                    machine_cost = cost.machine_cost,
+                    machine_cost_p = cost.machine_cost_p,
+                    overhead_cost = cost.overhead_cost,
+                    overhead_cost_p = cost.overhead_cost_p,
+                    process_cost_sub_total = cost.process_cost_sub_total,
+                    process_cost_sub_total_p = cost.process_cost_sub_total_p,
+                    defectives = cost.defectives,
+                    defectives_p = cost.defectives_p,
+                    admin_engin_qc = cost.admin_engin_qc,
+                    admin_engin_qc_p = cost.admin_engin_qc_p,
+                    tooling_cost = cost.tooling_cost,
+                    tooling_cost_p = cost.tooling_cost_p,
+                    process_margin_adjust = cost.process_margin_adjust,
+                    process_margin_adjust_p = cost.process_margin_adjust_p,
+                    other_fixed_cost_sub_total = cost.other_fixed_cost_sub_total,
+                    other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p,
+                    grand_total_cost = cost.grand_total_cost,
+                    grand_total_cost_p = cost.grand_total_cost_p
 
-            }).FirstOrDefault();
+                    //process_cost = cost.cost_Processes.Select(n => n.Process.process_cost).ToList()
+
+                }).FirstOrDefault();
 
             return _costWithProcess;
         }
@@ -901,6 +956,34 @@ namespace CostNAGAPI.Services
                 _cost.tooling_list_amount_usd_15 = cost.tooling_list_amount_usd_15;
 
                 _cost.tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd;
+
+
+                _cost.direct_raw_material = cost.direct_raw_material;
+                _cost.direct_raw_material_p = cost.direct_raw_material_p;
+                _cost.sub_material = cost.sub_material;
+                _cost.sub_material_p = cost.sub_material_p;
+                _cost.raw_material_cost_sub_total = cost.raw_material_cost_sub_total;
+                _cost.raw_material_cost_sub_total_p = cost.raw_material_cost_sub_total_p;
+                _cost.labor_cost = cost.labor_cost;
+                _cost.labor_cost_p = cost.labor_cost_p;
+                _cost.machine_cost = cost.machine_cost;
+                _cost.machine_cost_p = cost.machine_cost_p;
+                _cost.overhead_cost = cost.overhead_cost;
+                _cost.overhead_cost_p = cost.overhead_cost_p;
+                _cost.process_cost_sub_total = cost.process_cost_sub_total;
+                _cost.process_cost_sub_total_p = cost.process_cost_sub_total_p;
+                _cost.defectives = cost.defectives;
+                _cost.defectives_p = cost.defectives_p;
+                _cost.admin_engin_qc = cost.admin_engin_qc;
+                _cost.admin_engin_qc_p = cost.admin_engin_qc_p;
+                _cost.tooling_cost = cost.tooling_cost;
+                _cost.tooling_cost_p = cost.tooling_cost_p;
+                _cost.process_margin_adjust = cost.process_margin_adjust;
+                _cost.process_margin_adjust_p = cost.process_margin_adjust_p;
+                _cost.other_fixed_cost_sub_total = cost.other_fixed_cost_sub_total;
+                _cost.other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p;
+                _cost.grand_total_cost = cost.grand_total_cost;
+                _cost.grand_total_cost_p = cost.grand_total_cost_p;
 
                 _context.SaveChanges();
             }

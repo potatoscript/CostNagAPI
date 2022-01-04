@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
-    public partial class v1 : Migration
+    public partial class grandtotalcost : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,11 +30,21 @@ namespace CostNAGAPI.Migrations
                     product = table.Column<string>(type: "character varying(20)", nullable: true),
                     product_type = table.Column<string>(type: "character varying(10)", nullable: true),
                     size = table.Column<string>(type: "character varying(10)", nullable: true),
+                    item_id = table.Column<double>(type: "double precision", nullable: false),
+                    item_od = table.Column<double>(type: "double precision", nullable: false),
+                    item_w = table.Column<double>(type: "double precision", nullable: false),
+                    item_w2 = table.Column<double>(type: "double precision", nullable: false),
                     business_type = table.Column<string>(type: "character varying(20)", nullable: true),
                     qty_month = table.Column<int>(type: "integer", nullable: false),
-                    exchange_rate = table.Column<double>(type: "double precision", nullable: false),
-                    target_price_bht = table.Column<double>(type: "double precision", nullable: false),
-                    target_price_export = table.Column<double>(type: "double precision", nullable: false),
+                    exchange_rate_jpy = table.Column<double>(type: "double precision", nullable: false),
+                    exchange_rate_usd = table.Column<double>(type: "double precision", nullable: false),
+                    exchange_rate_eud = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_sgd = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_wr_sgd = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_usd = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_wr_usd = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_eud = table.Column<double>(type: "double precision", nullable: false),
+                    target_price_wr_eud = table.Column<double>(type: "double precision", nullable: false),
                     production_qty_day = table.Column<int>(type: "integer", nullable: false),
                     working_day = table.Column<int>(type: "integer", nullable: false),
                     rubber_material_name = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -48,6 +58,17 @@ namespace CostNAGAPI.Migrations
                     rubber_weight_kg_yieldrate = table.Column<double>(type: "double precision", nullable: false),
                     rubber_cost_sgd = table.Column<double>(type: "double precision", nullable: false),
                     rubber_percentage_target_price = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_material_name2 = table.Column<string>(type: "character varying(10)", nullable: true),
+                    rubber_database_price_current2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_database_price_new2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_price_kg2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_mixing_process_cost2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_weight_g2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_weight_kg2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_yield_rate2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_weight_kg_yieldrate2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_cost_sgd2 = table.Column<double>(type: "double precision", nullable: false),
+                    rubber_percentage_target_price2 = table.Column<double>(type: "double precision", nullable: false),
                     material_inhouse_name_1 = table.Column<string>(type: "character varying(30)", nullable: true),
                     material_inhouse_info_1 = table.Column<string>(type: "character varying(50)", nullable: true),
                     material_inhouse_value_1 = table.Column<double>(type: "double precision", nullable: false),
@@ -134,6 +155,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_1 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_1 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_1 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_1 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_2 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_2 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_2 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -142,6 +164,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_2 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_2 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_2 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_2 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_3 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_3 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_3 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -150,6 +173,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_3 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_3 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_3 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_3 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_4 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_4 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_4 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -158,6 +182,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_4 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_4 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_4 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_4 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_5 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_5 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_5 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -166,6 +191,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_5 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_5 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_5 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_5 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_6 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_6 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_6 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -174,6 +200,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_6 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_6 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_6 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_6 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_7 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_7 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_7 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -182,6 +209,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_7 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_7 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_7 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_7 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_8 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_8 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_8 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -190,6 +218,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_8 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_8 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_8 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_8 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_9 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_9 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_9 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -198,6 +227,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_9 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_9 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_9 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_9 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_10 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_10 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_10 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -206,6 +236,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_10 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_10 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_10 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_10 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_11 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_11 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_11 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -214,6 +245,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_11 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_11 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_11 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_11 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_12 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_12 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_12 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -222,6 +254,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_12 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_12 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_12 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_12 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_13 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_13 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_13 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -230,6 +263,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_13 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_13 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_13 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_13 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_14 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_14 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_14 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -238,6 +272,7 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_14 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_14 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_14 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_amount_sgd_14 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_description_15 = table.Column<string>(type: "character varying(50)", nullable: true),
                     tooling_list_type_15 = table.Column<string>(type: "character varying(10)", nullable: true),
                     tooling_list_source_15 = table.Column<string>(type: "character varying(10)", nullable: true),
@@ -246,7 +281,35 @@ namespace CostNAGAPI.Migrations
                     tooling_list_price_15 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_jpy_15 = table.Column<double>(type: "double precision", nullable: false),
                     tooling_list_amount_usd_15 = table.Column<double>(type: "double precision", nullable: false),
-                    tooling_list_total_amount_usd = table.Column<double>(type: "double precision", nullable: false)
+                    tooling_list_amount_sgd_15 = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_total_amount_usd = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_list_total_amount_sgd = table.Column<double>(type: "double precision", nullable: false),
+                    direct_raw_material = table.Column<double>(type: "double precision", nullable: false),
+                    direct_raw_material_p = table.Column<double>(type: "double precision", nullable: false),
+                    sub_material = table.Column<double>(type: "double precision", nullable: false),
+                    sub_material_p = table.Column<double>(type: "double precision", nullable: false),
+                    raw_material_cost_sub_total = table.Column<double>(type: "double precision", nullable: false),
+                    raw_material_cost_sub_total_p = table.Column<double>(type: "double precision", nullable: false),
+                    labor_cost = table.Column<double>(type: "double precision", nullable: false),
+                    labor_cost_p = table.Column<double>(type: "double precision", nullable: false),
+                    machine_cost = table.Column<double>(type: "double precision", nullable: false),
+                    machine_cost_p = table.Column<double>(type: "double precision", nullable: false),
+                    overhead_cost = table.Column<double>(type: "double precision", nullable: false),
+                    overhead_cost_p = table.Column<double>(type: "double precision", nullable: false),
+                    process_cost_sub_total = table.Column<double>(type: "double precision", nullable: false),
+                    process_cost_sub_total_p = table.Column<double>(type: "double precision", nullable: false),
+                    defectives = table.Column<double>(type: "double precision", nullable: false),
+                    defectives_p = table.Column<double>(type: "double precision", nullable: false),
+                    admin_engin_qc = table.Column<double>(type: "double precision", nullable: false),
+                    admin_engin_qc_p = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_cost = table.Column<double>(type: "double precision", nullable: false),
+                    tooling_cost_p = table.Column<double>(type: "double precision", nullable: false),
+                    process_margin_adjust = table.Column<double>(type: "double precision", nullable: false),
+                    process_margin_adjust_p = table.Column<double>(type: "double precision", nullable: false),
+                    other_fixed_cost_sub_total = table.Column<double>(type: "double precision", nullable: false),
+                    other_fixed_cost_sub_total_p = table.Column<double>(type: "double precision", nullable: false),
+                    grand_total_cost = table.Column<double>(type: "double precision", nullable: false),
+                    grand_total_cost_p = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -260,7 +323,7 @@ namespace CostNAGAPI.Migrations
                     ProcessId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     doc_no = table.Column<string>(type: "character varying(20)", nullable: true),
-                    process_name = table.Column<string>(type: "character varying(20)", nullable: true),
+                    process_name = table.Column<string>(type: "character varying(100)", nullable: true),
                     working_day = table.Column<double>(type: "double precision", nullable: false),
                     working_time_day = table.Column<double>(type: "double precision", nullable: false),
                     working_time_month = table.Column<double>(type: "double precision", nullable: false),
@@ -277,6 +340,7 @@ namespace CostNAGAPI.Migrations
                     total_machine_cost = table.Column<double>(type: "double precision", nullable: false),
                     machine_usage_day = table.Column<double>(type: "double precision", nullable: false),
                     machine_cost_month = table.Column<double>(type: "double precision", nullable: false),
+                    machine_cost_month2 = table.Column<double>(type: "double precision", nullable: false),
                     machine_cost_month_percentage = table.Column<double>(type: "double precision", nullable: false),
                     machine_cost_month_percentage_unit = table.Column<double>(type: "double precision", nullable: false),
                     consumption_kwh = table.Column<double>(type: "double precision", nullable: false),
@@ -308,46 +372,97 @@ namespace CostNAGAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Costs_Processes",
+                name: "ProcessesMaster",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    ProcessMasterId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CostId = table.Column<int>(type: "integer", nullable: false),
-                    ProcessId = table.Column<int>(type: "integer", nullable: false)
+                    process_name = table.Column<string>(type: "character varying(100)", nullable: true),
+                    process_type = table.Column<string>(type: "character varying(20)", nullable: true),
+                    od_min = table.Column<double>(type: "double precision", nullable: false),
+                    od_max = table.Column<double>(type: "double precision", nullable: false),
+                    overhead_cost = table.Column<double>(type: "double precision", nullable: false),
+                    machine_cost = table.Column<double>(type: "double precision", nullable: false),
+                    labor_cost = table.Column<double>(type: "double precision", nullable: false),
+                    total_cost = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Costs_Processes", x => x.Id);
+                    table.PrimaryKey("PK_ProcessesMaster", x => x.ProcessMasterId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rubbers",
+                columns: table => new
+                {
+                    RubberId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    material_name = table.Column<string>(type: "character varying(100)", nullable: true),
+                    price_kg = table.Column<double>(type: "double precision", nullable: false),
+                    mixing_process_cost = table.Column<double>(type: "double precision", nullable: false),
+                    weight_g = table.Column<double>(type: "double precision", nullable: false),
+                    yield_rate = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rubbers", x => x.RubberId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CostsProcesses",
+                columns: table => new
+                {
+                    CostProcessId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    doc_no = table.Column<string>(type: "character varying(20)", nullable: true),
+                    process_name = table.Column<string>(type: "character varying(100)", nullable: true),
+                    process_type = table.Column<string>(type: "character varying(20)", nullable: true),
+                    item_od = table.Column<double>(type: "double precision", nullable: false),
+                    overhead_cost = table.Column<double>(type: "double precision", nullable: false),
+                    machine_cost = table.Column<double>(type: "double precision", nullable: false),
+                    labor_cost = table.Column<double>(type: "double precision", nullable: false),
+                    total_cost = table.Column<double>(type: "double precision", nullable: false),
+                    CostId = table.Column<int>(type: "integer", nullable: true),
+                    ProcessId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CostsProcesses", x => x.CostProcessId);
                     table.ForeignKey(
-                        name: "FK_Costs_Processes_Costs_CostId",
+                        name: "FK_CostsProcesses_Costs_CostId",
                         column: x => x.CostId,
                         principalTable: "Costs",
                         principalColumn: "CostId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Costs_Processes_Processes_ProcessId",
+                        name: "FK_CostsProcesses_Processes_ProcessId",
                         column: x => x.ProcessId,
                         principalTable: "Processes",
                         principalColumn: "ProcessId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Costs_Processes_CostId",
-                table: "Costs_Processes",
+                name: "IX_CostsProcesses_CostId",
+                table: "CostsProcesses",
                 column: "CostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Costs_Processes_ProcessId",
-                table: "Costs_Processes",
+                name: "IX_CostsProcesses_ProcessId",
+                table: "CostsProcesses",
                 column: "ProcessId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Costs_Processes");
+                name: "CostsProcesses");
+
+            migrationBuilder.DropTable(
+                name: "ProcessesMaster");
+
+            migrationBuilder.DropTable(
+                name: "Rubbers");
 
             migrationBuilder.DropTable(
                 name: "Costs");
