@@ -325,7 +325,15 @@ namespace CostNAGAPI.Services
                 other_fixed_cost_sub_total = cost.other_fixed_cost_sub_total,
                 other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p,
                 grand_total_cost = cost.grand_total_cost,
-                grand_total_cost_p = cost.grand_total_cost_p
+                grand_total_cost_p = cost.grand_total_cost_p,
+
+                production_capacity = cost.production_capacity,
+                actual_working_time = cost.actual_working_time,
+                cycle_time = cost.cycle_time,
+                efficiency = cost.efficiency,
+                daily_qty_days = cost.daily_qty_days,
+                daily_qty_days_p = cost.daily_qty_days_p,
+                daily_amount = cost.daily_amount
 
         };
 
@@ -661,7 +669,15 @@ namespace CostNAGAPI.Services
                     other_fixed_cost_sub_total = cost.other_fixed_cost_sub_total,
                     other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p,
                     grand_total_cost = cost.grand_total_cost,
-                    grand_total_cost_p = cost.grand_total_cost_p
+                    grand_total_cost_p = cost.grand_total_cost_p,
+
+                    production_capacity = cost.production_capacity,
+                    actual_working_time = cost.actual_working_time,
+                    cycle_time = cost.cycle_time,
+                    efficiency = cost.efficiency,
+                    daily_qty_days = cost.daily_qty_days,
+                    daily_qty_days_p = cost.daily_qty_days_p,
+                    daily_amount = cost.daily_amount
 
                     //process_cost = cost.cost_Processes.Select(n => n.Process.process_cost).ToList()
 
@@ -984,6 +1000,14 @@ namespace CostNAGAPI.Services
                 _cost.other_fixed_cost_sub_total_p = cost.other_fixed_cost_sub_total_p;
                 _cost.grand_total_cost = cost.grand_total_cost;
                 _cost.grand_total_cost_p = cost.grand_total_cost_p;
+
+                _cost.production_capacity = cost.production_capacity;
+                _cost.actual_working_time = cost.actual_working_time;
+                _cost.cycle_time = cost.cycle_time;
+                _cost.efficiency = cost.efficiency;
+                _cost.daily_qty_days = cost.daily_qty_days;
+                _cost.daily_qty_days_p = cost.daily_qty_days_p;
+                _cost.daily_amount = cost.daily_amount;
 
                 _context.SaveChanges();
             }
