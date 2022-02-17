@@ -32,7 +32,8 @@ namespace CostNAGAPI.Services
 
         }
 
-        public List<Rubber> GetAllRubber() => _context.Rubbers.OrderBy(n => n.material_name).ToList();
+        public List<Rubber> GetAllRubber() => 
+            _context.Rubbers.OrderBy(n => n.material_name).ToList();
 
         public Rubber GetRubberById(int Id) =>
             _context.Rubbers.FirstOrDefault(n => n.RubberId == Id);

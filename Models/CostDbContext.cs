@@ -44,6 +44,7 @@ namespace CostNAG.Models
         public DbSet<ProcessMaster> ProcessesMaster { get; set; }
         public DbSet<CostProcess> CostsProcesses { get; set; }
         public DbSet<Rubber> Rubbers { get; set; }
+        public DbSet<Tooling> Toolings { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

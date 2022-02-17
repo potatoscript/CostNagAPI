@@ -3,15 +3,17 @@ using System;
 using CostNAG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CostNAGAPI.Migrations
 {
     [DbContext(typeof(CostDbContext))]
-    partial class CostDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217022101_tooling")]
+    partial class tooling
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1203,33 +1205,6 @@ namespace CostNAGAPI.Migrations
                     b.HasKey("RubberId");
 
                     b.ToTable("Rubbers");
-                });
-
-            modelBuilder.Entity("CostNAGAPI.Models.Tooling", b =>
-                {
-                    b.Property<int>("ToolingId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("description")
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<double>("price")
-                        .HasColumnType("double precision");
-
-                    b.Property<double>("qty")
-                        .HasColumnType("double precision");
-
-                    b.Property<string>("source")
-                        .HasColumnType("character varying(10)");
-
-                    b.Property<string>("unit")
-                        .HasColumnType("character varying(10)");
-
-                    b.HasKey("ToolingId");
-
-                    b.ToTable("Toolings");
                 });
 
             modelBuilder.Entity("CostNAGAPI.Models.CostProcess", b =>
