@@ -1,5 +1,6 @@
 ﻿using CostNAG.Models;
 using CostNAGAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -342,10 +343,6 @@ namespace CostNAGAPI.Services
 
         }
 
-       
-
-
-
         //public List<Cost> GetAllCost()
         //{
         //    return _context.Costs.ToList();
@@ -357,6 +354,18 @@ namespace CostNAGAPI.Services
             return _context.Costs.Select(m => new Cost() { doc_no=m.doc_no }).Distinct().ToList();
         }
 
+
+        public List<Cost> GetCostBySearch(string doc)
+        {
+            return _context.Costs.Select(m => new Cost() { 
+                doc_no = m.doc_no,
+                parts_code = m.parts_code,
+                CostId = m.CostId
+            })
+                .Where(n => n.doc_no.Contains(doc))
+                .Distinct().ToList();
+        }
+
         //public Cost GetCostById(int costId) => _context.Costs.FirstOrDefault(n => n.CostId == costId);
         public Cost GetCostById(int costId)
         {
@@ -364,6 +373,7 @@ namespace CostNAGAPI.Services
                 .Where(n => n.CostId == costId)
                 .Select(cost => new Cost()
             {
+                CostId = cost.CostId,
                 plant = cost.plant,
                 item_spec = cost.item_spec,
                 issue_date = cost.issue_date,
@@ -1025,6 +1035,39 @@ namespace CostNAGAPI.Services
             }
 
         }
+
+
+        /*
+        public Cost GetCostBySearch(string search)
+        {
+            var _costWithProcess = _context.Costs
+                .Where(n => DbFunctionsExtensions.Like(this, n.doc_no, "%search%"))
+                .Select(cost => new Cost()
+                {
+                    plant = cost.plant,
+                    item_spec = cost.item_spec,
+                    issue_date = cost.issue_date,
+                    section = cost.section,
+                    doc_no = cost.doc_no,
+                    wr_no = cost.wr_no,
+                    sales = cost.sales,
+                    revision_no = cost.revision_no,
+                    checked_date = cost.checked_date,
+                    approved_by = cost.approved_by,
+                    expired_by = cost.expired_by,
+                    customer = cost.customer,
+                    parts_code = cost.parts_code,
+                    item = cost.item,
+                    product = cost.product,
+                    product_type = cost.product_type,
+                    size = cost.size,
+                    
+                }).FirstOrDefault();
+
+            return _costWithProcess;
+        }
+        */
+
 
     }
 }

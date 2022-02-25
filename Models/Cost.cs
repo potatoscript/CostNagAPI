@@ -118,7 +118,7 @@ namespace CostNAGAPI.Models
         [Column(TypeName = "integer")]
         public double working_day { get; set; }
 
-        [Column(TypeName = "character varying(10)")]
+        [Column(TypeName = "character varying(100)")]
         public string rubber_material_name  { get; set; }
 
         [Column(TypeName = "double precision")]
@@ -153,7 +153,7 @@ namespace CostNAGAPI.Models
 
 
 
-        [Column(TypeName = "character varying(10)")]
+        [Column(TypeName = "character varying(100)")]
         public string rubber_material_name2 { get; set; }
 
         [Column(TypeName = "double precision")]

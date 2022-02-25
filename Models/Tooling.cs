@@ -24,5 +24,8 @@ namespace CostNAGAPI.Models
 
         [Column(TypeName = "double precision")]
         public double price { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double od { get; set; }
     }
 }

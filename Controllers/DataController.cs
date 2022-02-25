@@ -38,6 +38,14 @@ namespace CostNAGAPI.Controllers
             return Ok(allCosts);
         }
 
+        [HttpGet("get-cost-by-search/{doc}")]
+        public IActionResult GetCostBySearch(string doc)
+        {
+            var cost = _costService.GetCostBySearch(doc);
+
+            return Ok(cost);
+        }
+
         [HttpGet("get-cost-by-id/{id}")]
         public IActionResult GetCostById(int id)
         {
