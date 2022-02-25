@@ -360,7 +360,13 @@ namespace CostNAGAPI.Services
             return _context.Costs.Select(m => new Cost() { 
                 doc_no = m.doc_no,
                 parts_code = m.parts_code,
-                CostId = m.CostId
+                CostId = m.CostId,
+                wr_no=m.wr_no,
+                sales = m.sales,
+                product=m.product,
+                issue_date=m.issue_date,
+                expired_by=m.expired_by,
+                approved_by=m.approved_by
             })
                 .Where(n => n.doc_no.Contains(doc))
                 .Distinct().ToList();
