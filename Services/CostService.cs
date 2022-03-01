@@ -1,6 +1,7 @@
 ﻿using CostNAG.Models;
 using CostNAGAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,16 @@ namespace CostNAGAPI.Services
 {
     public class CostService
     {
+
+        public IConfiguration _server;
+
+
         private CostDbContext _context;
-        public CostService(CostDbContext context)
+        public CostService(CostDbContext context, IConfiguration configuration)
         {
             _context = context;
+
+            _server = configuration;
         }
 
         public void AddCost(Cost cost)
@@ -352,6 +359,71 @@ namespace CostNAGAPI.Services
         public List<Cost> GetAllDocNo()
         {
             return _context.Costs.Select(m => new Cost() { doc_no=m.doc_no }).Distinct().ToList();
+        }
+
+
+
+        public List<CostVM> GetCostByPage(int currentPage)
+        {
+            int maxRows = 10;
+            CostVM costModel = new CostVM();
+            /*
+            costModel.CostData = _context.Costs
+                        .FromSqlRaw("Select * FROM \"Costs\" ORDER BY \"CostId\" ")
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)this._context.Costs.Count() / Convert.ToDecimal(maxRows));
+            costModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            costModel.CurrentPageIndex = currentPage;
+            */
+
+            CostVM list = new CostVM();
+            var n = 0;
+
+            string sql0 = "SELECT count(doc_no) FROM \"Costs\" ";
+            Database db0 = new Database(sql0, _server);
+            if (db0.data.HasRows)
+            {
+                while (db0.data.Read())
+                {
+                    n = Int32.Parse(db0.data[0].ToString());
+                }
+            }
+            db0.Close();
+
+            double pageCount = (double)(n / Convert.ToDecimal(maxRows));
+            //costModel.PageCount = (int)Math.Ceiling(pageCount);
+            //costModel.CurrentPageIndex = currentPage;
+
+            string sql = "SELECT \"CostId\", doc_no, issue_date FROM \"Costs\" ";
+
+                Database db = new Database(sql, _server);
+                if (db.data.HasRows)
+                {
+                    while (db.data.Read())
+                    {
+                        list.ListModel.Add(new CostVM
+                        {
+                            CostId = Int32.Parse(db.data[0].ToString()),
+                            doc_no = db.data[1].ToString(),
+                            issue_date = db.data[2].ToString(),
+                            PageCount = (int)Math.Ceiling(pageCount),
+                            CurrentPageIndex = currentPage
+                        });
+
+                    }
+                        
+                }
+                db.Close();
+
+
+            List<CostVM> model = list.ListModel.ToList();
+
+
+            //return costModel;
+            return model;
         }
 
 

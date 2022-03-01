@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/tooling/get-tooling-by-id/1",
+      "launchUrl": "api/cost/get-cost-by-page/1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
