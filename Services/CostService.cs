@@ -358,7 +358,10 @@ namespace CostNAGAPI.Services
 
         public List<Cost> GetAllDocNo()
         {
-            return _context.Costs.Select(m => new Cost() { doc_no=m.doc_no }).Distinct().ToList();
+            return _context.Costs.Select(m => new Cost() { doc_no=m.doc_no })
+                .OrderBy(n=>n.doc_no)
+                .Distinct()
+                .ToList();
         }
 
 
@@ -382,7 +385,7 @@ namespace CostNAGAPI.Services
             CostVM list = new CostVM();
             var n = 0;
 
-            string sql0 = "SELECT count(doc_no) FROM \"Costs\" ";
+            string sql0 = "SELECT count(doc_no) FROM \"Costs\"  ";
             Database db0 = new Database(sql0, _server);
             if (db0.data.HasRows)
             {
@@ -397,7 +400,13 @@ namespace CostNAGAPI.Services
             //costModel.PageCount = (int)Math.Ceiling(pageCount);
             //costModel.CurrentPageIndex = currentPage;
 
-            string sql = "SELECT \"CostId\", doc_no, issue_date FROM \"Costs\" ";
+            int MinID = (int)currentPage * 10 - 10;
+            int MaxID = (int)currentPage * 10;
+
+            string sql = "SELECT \"CostId\", doc_no,wr_no,sales,parts_code,product,issue_date,expired_by,approved_by FROM \"Costs\" ";
+                sql += " WHERE \"CostId\" >= '" + MinID + "' AND "; 
+                sql += " \"CostId\" < '" + MaxID + "'  ";
+            sql += " ORDER BY doc_no ";
 
                 Database db = new Database(sql, _server);
                 if (db.data.HasRows)
@@ -408,7 +417,13 @@ namespace CostNAGAPI.Services
                         {
                             CostId = Int32.Parse(db.data[0].ToString()),
                             doc_no = db.data[1].ToString(),
-                            issue_date = db.data[2].ToString(),
+                            wr_no = db.data[2].ToString(),
+                            sales = db.data[3].ToString(),
+                            parts_code = db.data[4].ToString(),
+                            product = db.data[5].ToString(),
+                            issue_date = db.data[6].ToString(),
+                            expired_by = db.data[7].ToString(),
+                            approved_by = db.data[8].ToString(),
                             PageCount = (int)Math.Ceiling(pageCount),
                             CurrentPageIndex = currentPage
                         });
