@@ -29,10 +29,10 @@ namespace CostNAGAPI.Controllers
         }
 
 
-        [HttpGet("get-tooling-by-od/{od}")]
-        public IActionResult GetToolingByOd(int od)
+        [HttpGet("get-tooling-by-od/{od}/{type}")]
+        public IActionResult GetToolingByOdType(int od, string type)
         {
-            var data = _toolingService.GetToolingByOd(od);
+            var data = _toolingService.GetToolingByOdType(od,type);
 
             return Ok(data);
         }

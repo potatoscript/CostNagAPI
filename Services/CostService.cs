@@ -403,9 +403,14 @@ namespace CostNAGAPI.Services
             int MinID = (int)currentPage * 10 - 10;
             int MaxID = (int)currentPage * 10;
 
+            if (MinID < 0) MinID = 0;
+
+
+            //set CostId > MinID to get the first data 
+            //Set CostId <= MaxID to make sure last data was included.
             string sql = "SELECT \"CostId\", doc_no,wr_no,sales,parts_code,product,issue_date,expired_by,approved_by FROM \"Costs\" ";
-                sql += " WHERE \"CostId\" >= '" + MinID + "' AND "; 
-                sql += " \"CostId\" < '" + MaxID + "'  ";
+                sql += " WHERE \"CostId\" > '" + MinID + "' AND "; 
+                sql += " \"CostId\" <= '" + MaxID + "'  ";
             sql += " ORDER BY doc_no ";
 
                 Database db = new Database(sql, _server);

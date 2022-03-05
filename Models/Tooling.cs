@@ -27,5 +27,11 @@ namespace CostNAGAPI.Models
 
         [Column(TypeName = "double precision")]
         public double od { get; set; }
+
+        [Column(TypeName = "double precision")]
+        public double od_max { get; set; }
+
+        [Column(TypeName = "character varying(10)")]
+        public string type { get; set; }
     }
 }

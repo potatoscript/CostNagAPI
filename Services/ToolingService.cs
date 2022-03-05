@@ -28,7 +28,9 @@ namespace CostNAGAPI.Services
                 qty = r.qty,
                 unit = r.unit,
                 price = r.price,
-                od = r.od
+                od = r.od,
+                od_max = r.od_max,
+                type = r.type
             };
 
             _context.Toolings.Add(_tooling);
@@ -37,8 +39,8 @@ namespace CostNAGAPI.Services
         }
 
 
-        public List<Tooling> GetToolingByOd(int Od) =>
-            _context.Toolings.Where(n => n.od == Od || n.od == 0).ToList();
+        public List<Tooling> GetToolingByOdType(int Od, string type) =>
+            _context.Toolings.Where(n => n.type == type && n.od <= Od && n.od_max >= Od || n.od == 0).ToList();
 
         public Tooling GetToolingById(int Id) =>
             _context.Toolings.FirstOrDefault(n => n.ToolingId == Id);
@@ -55,6 +57,8 @@ namespace CostNAGAPI.Services
                 _tooling.unit = tooling.unit;
                 _tooling.price = tooling.price;
                 _tooling.od = tooling.od;
+                _tooling.od_max = tooling.od_max;
+                _tooling.type = tooling.type;
 
                 _context.SaveChanges();
             }
