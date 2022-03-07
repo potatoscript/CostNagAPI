@@ -27,6 +27,7 @@ namespace CostNAGAPI.Services
         {
             var _cost = new Cost()
             {
+                //CostId = Int32.Parse(_context.Costs.OrderByDescending(u=>u.CostId).FirstOrDefault().ToString())+1,
                 plant = cost.plant,
                 item_spec = cost.item_spec,
                 issue_date = cost.issue_date,
@@ -409,8 +410,9 @@ namespace CostNAGAPI.Services
             //set CostId > MinID to get the first data 
             //Set CostId <= MaxID to make sure last data was included.
             string sql = "SELECT \"CostId\", doc_no,wr_no,sales,parts_code,product,issue_date,expired_by,approved_by FROM \"Costs\" ";
-                sql += " WHERE \"CostId\" > '" + MinID + "' AND "; 
-                sql += " \"CostId\" <= '" + MaxID + "'  ";
+            sql += " WHERE \"CostId\" > '" + MinID + "' AND "; 
+
+            sql += " \"CostId\" <= '" + MaxID + "'  ";
             sql += " ORDER BY doc_no ";
 
                 Database db = new Database(sql, _server);
