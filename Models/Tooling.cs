@@ -33,5 +33,6 @@ namespace CostNAGAPI.Models
 
         [Column(TypeName = "character varying(10)")]
         public string type { get; set; }
+
     }
 }

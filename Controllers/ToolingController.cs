@@ -28,6 +28,14 @@ namespace CostNAGAPI.Controllers
             return Ok(allToolings);
         }
 
+        [HttpGet("get-tooling-by-page/{page}")]
+        public IActionResult GetToolingByPage(int page)
+        {
+            var data = _toolingService.GetToolingByPage(page);
+
+            return Ok(data);
+        }
+
 
         [HttpGet("get-tooling-by-od/{od}/{type}")]
         public IActionResult GetToolingByOdType(int od, string type)

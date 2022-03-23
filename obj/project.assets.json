@@ -6758,11 +6758,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CostNagAPI\\CostNAGAPI.csproj",
+      "projectUniqueName": "E:\\CostNagApi_Code\\CostNAGAPI.csproj",
       "projectName": "CostNAGAPI",
-      "projectPath": "E:\\CostNagAPI\\CostNAGAPI.csproj",
+      "projectPath": "E:\\CostNagApi_Code\\CostNAGAPI.csproj",
       "packagesPath": "C:\\Users\\limks\\.nuget\\packages\\",
-      "outputPath": "E:\\CostNagAPI\\obj\\",
+      "outputPath": "E:\\CostNagApi_Code\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\limks\\AppData\\Roaming\\NuGet\\NuGet.Config",

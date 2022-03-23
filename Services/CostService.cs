@@ -386,7 +386,7 @@ namespace CostNAGAPI.Services
             CostVM list = new CostVM();
             var n = 0;
 
-            string sql0 = "SELECT count(doc_no) FROM \"Costs\"  ";
+            string sql0 = "SELECT max(\"CostId\") FROM \"Costs\"  ";
             Database db0 = new Database(sql0, _server);
             if (db0.data.HasRows)
             {
