@@ -126,6 +126,39 @@ namespace CostNAGAPI.Services
         public Tooling GetToolingById(int Id) =>
             _context.Toolings.FirstOrDefault(n => n.ToolingId == Id);
 
+        public List<ToolingsVM> GetToolingBySearch(string description)
+        {
+            ToolingsVM list = new ToolingsVM();
+
+            string sql = "SELECT \"ToolingId\",description,source,qty,unit,price,od,od_max,type FROM \"Toolings\" ";
+            sql += " WHERE description LIKE '%" + description + "%' ";
+            sql += " ORDER BY description ";
+
+            Database db = new Database(sql, _server);
+            if (db.data.HasRows)
+            {
+                while (db.data.Read())
+                {
+                    list.ListModel.Add(new ToolingsVM
+                    {
+                        ToolingId = Int32.Parse(db.data[0].ToString()),
+                        description = db.data[1].ToString(),
+                        source = db.data[2].ToString(),
+                        qty = double.Parse(db.data[3].ToString()),
+                        unit = db.data[4].ToString(),
+                        price = double.Parse(db.data[5].ToString()),
+                        od = double.Parse(db.data[6].ToString()),
+                        od_max = double.Parse(db.data[7].ToString()),
+                        type = db.data[8].ToString()
+                    });
+                }
+            }
+            db.Close();
+
+            List<ToolingsVM> model = list.ListModel.ToList();
+
+            return model;
+        }
 
         public Tooling UpdateToolingById(int Id, Tooling tooling)
         {

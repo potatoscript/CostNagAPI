@@ -53,7 +53,13 @@ namespace CostNAGAPI.Controllers
             return Ok(data);
         }
 
+        [HttpGet("get-tooling-by-search/{description}")]
+        public IActionResult GetToolingBySearch(string description)
+        {
+            var data = _toolingService.GetToolingBySearch(description);
 
+            return Ok(data);
+        }
 
         [HttpPost("add-tooling-data")]
         public IActionResult AddTooling(Tooling tooling)

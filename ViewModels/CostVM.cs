@@ -63,7 +63,9 @@ namespace CostNAGAPI.Models
         ///</summary>
         public int PageCount { get; set; }
 
+        public double tooling_list_total_amount_sgd { get; set; }
 
+        public double target_price_sgd { get; set; }
 
     }
 

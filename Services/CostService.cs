@@ -409,7 +409,7 @@ namespace CostNAGAPI.Services
 
             //set CostId > MinID to get the first data 
             //Set CostId <= MaxID to make sure last data was included.
-            string sql = "SELECT \"CostId\", doc_no,wr_no,sales,parts_code,product,issue_date,expired_by,approved_by FROM \"Costs\" ";
+            string sql = "SELECT \"CostId\", doc_no,wr_no,sales,parts_code,product,issue_date,expired_by,approved_by,target_price_sgd,tooling_list_total_amount_sgd FROM \"Costs\" ";
             sql += " WHERE \"CostId\" > '" + MinID + "' AND "; 
 
             sql += " \"CostId\" <= '" + MaxID + "'  ";
@@ -431,6 +431,8 @@ namespace CostNAGAPI.Services
                             issue_date = db.data[6].ToString(),
                             expired_by = db.data[7].ToString(),
                             approved_by = db.data[8].ToString(),
+                            target_price_sgd = double.Parse(db.data[9].ToString()),
+                            tooling_list_total_amount_sgd = double.Parse(db.data[10].ToString()),
                             PageCount = (int)Math.Ceiling(pageCount),
                             CurrentPageIndex = currentPage
                         });
@@ -460,7 +462,9 @@ namespace CostNAGAPI.Services
                 product=m.product,
                 issue_date=m.issue_date,
                 expired_by=m.expired_by,
-                approved_by=m.approved_by
+                approved_by=m.approved_by,
+                target_price_sgd = m.target_price_sgd,
+                tooling_list_total_amount_sgd = m.tooling_list_total_amount_sgd
             })
                 .Where(n => n.doc_no.Contains(doc))
                 .Distinct().ToList();
@@ -1081,6 +1085,7 @@ namespace CostNAGAPI.Services
                 _cost.tooling_list_amount_jpy_15 = cost.tooling_list_amount_jpy_15;
                 _cost.tooling_list_amount_usd_15 = cost.tooling_list_amount_usd_15;
 
+                _cost.tooling_list_total_amount_sgd = cost.tooling_list_total_amount_sgd;
                 _cost.tooling_list_total_amount_usd = cost.tooling_list_total_amount_usd;
 
 
